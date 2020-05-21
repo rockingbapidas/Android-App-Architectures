@@ -1,0 +1,115 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.bapidas.news"
+4    android:versionCode="1"
+5    android:versionName="1.0.0" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="23"
+8-->/Users/android/AndroidStudioProjects/NewsApp/app/src/main/AndroidManifest.xml
+9        android:targetSdkVersion="29" />
+9-->/Users/android/AndroidStudioProjects/NewsApp/app/src/main/AndroidManifest.xml
+10
+11    <uses-permission android:name="android.permission.INTERNET" />
+11-->/Users/android/AndroidStudioProjects/NewsApp/app/src/main/AndroidManifest.xml:5:5-67
+11-->/Users/android/AndroidStudioProjects/NewsApp/app/src/main/AndroidManifest.xml:5:22-64
+12    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+12-->/Users/android/AndroidStudioProjects/NewsApp/app/src/main/AndroidManifest.xml:6:5-79
+12-->/Users/android/AndroidStudioProjects/NewsApp/app/src/main/AndroidManifest.xml:6:22-76
+13    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+13-->/Users/android/AndroidStudioProjects/NewsApp/app/src/main/AndroidManifest.xml:7:5-76
+13-->/Users/android/AndroidStudioProjects/NewsApp/app/src/main/AndroidManifest.xml:7:22-73
+14    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+14-->/Users/android/AndroidStudioProjects/NewsApp/app/src/main/AndroidManifest.xml:8:5-76
+14-->/Users/android/AndroidStudioProjects/NewsApp/app/src/main/AndroidManifest.xml:8:22-73
+15
+16    <application
+16-->/Users/android/AndroidStudioProjects/NewsApp/app/src/main/AndroidManifest.xml:10:5-41:19
+17        android:name="com.bapidas.news.NewsApplication"
+17-->/Users/android/AndroidStudioProjects/NewsApp/app/src/main/AndroidManifest.xml:11:9-40
+18        android:allowBackup="false"
+18-->/Users/android/AndroidStudioProjects/NewsApp/app/src/main/AndroidManifest.xml:12:9-36
+19        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+19-->[androidx.core:core:1.2.0] /Users/android/.gradle/caches/transforms-2/files-2.1/2d84425b8f9299fef33734b338e70606/core-1.2.0/AndroidManifest.xml:24:18-86
+20        android:debuggable="true"
+21        android:extractNativeLibs="false"
+22        android:icon="@mipmap/ic_launcher"
+22-->/Users/android/AndroidStudioProjects/NewsApp/app/src/main/AndroidManifest.xml:13:9-43
+23        android:label="@string/app_name"
+23-->/Users/android/AndroidStudioProjects/NewsApp/app/src/main/AndroidManifest.xml:14:9-41
+24        android:networkSecurityConfig="@xml/network_security_config"
+24-->/Users/android/AndroidStudioProjects/NewsApp/app/src/main/AndroidManifest.xml:15:9-69
+25        android:roundIcon="@mipmap/ic_launcher_round"
+25-->/Users/android/AndroidStudioProjects/NewsApp/app/src/main/AndroidManifest.xml:16:9-54
+26        android:supportsRtl="true"
+26-->/Users/android/AndroidStudioProjects/NewsApp/app/src/main/AndroidManifest.xml:17:9-35
+27        android:theme="@style/AppTheme" >
+27-->/Users/android/AndroidStudioProjects/NewsApp/app/src/main/AndroidManifest.xml:18:9-40
+28        <activity
+28-->/Users/android/AndroidStudioProjects/NewsApp/app/src/main/AndroidManifest.xml:21:9-32:20
+29            android:name="com.bapidas.news.ui.main.MainActivity"
+29-->/Users/android/AndroidStudioProjects/NewsApp/app/src/main/AndroidManifest.xml:22:13-49
+30            android:label="@string/app_name"
+30-->/Users/android/AndroidStudioProjects/NewsApp/app/src/main/AndroidManifest.xml:23:13-45
+31            android:screenOrientation="unspecified"
+31-->/Users/android/AndroidStudioProjects/NewsApp/app/src/main/AndroidManifest.xml:24:13-52
+32            android:theme="@style/AppTheme.SplashScreen" >
+32-->/Users/android/AndroidStudioProjects/NewsApp/app/src/main/AndroidManifest.xml:25:13-57
+33            <intent-filter>
+33-->/Users/android/AndroidStudioProjects/NewsApp/app/src/main/AndroidManifest.xml:26:13-31:29
+34                <action android:name="android.intent.action.MAIN" />
+34-->/Users/android/AndroidStudioProjects/NewsApp/app/src/main/AndroidManifest.xml:27:17-69
+34-->/Users/android/AndroidStudioProjects/NewsApp/app/src/main/AndroidManifest.xml:27:25-66
+35
+36                <category android:name="android.intent.category.LAUNCHER" />
+36-->/Users/android/AndroidStudioProjects/NewsApp/app/src/main/AndroidManifest.xml:29:17-77
+36-->/Users/android/AndroidStudioProjects/NewsApp/app/src/main/AndroidManifest.xml:29:27-74
+37                <category android:name="android.intent.category.DEFAULT" />
+37-->/Users/android/AndroidStudioProjects/NewsApp/app/src/main/AndroidManifest.xml:30:17-76
+37-->/Users/android/AndroidStudioProjects/NewsApp/app/src/main/AndroidManifest.xml:30:27-73
+38            </intent-filter>
+39        </activity>
+40        <activity
+40-->/Users/android/AndroidStudioProjects/NewsApp/app/src/main/AndroidManifest.xml:33:9-36:56
+41            android:name="com.bapidas.news.ui.main.news.listing.NewsActivity"
+41-->/Users/android/AndroidStudioProjects/NewsApp/app/src/main/AndroidManifest.xml:34:13-62
+42            android:screenOrientation="unspecified"
+42-->/Users/android/AndroidStudioProjects/NewsApp/app/src/main/AndroidManifest.xml:35:13-52
+43            android:theme="@style/AppTheme.NewsList" />
+43-->/Users/android/AndroidStudioProjects/NewsApp/app/src/main/AndroidManifest.xml:36:13-53
+44        <activity
+44-->/Users/android/AndroidStudioProjects/NewsApp/app/src/main/AndroidManifest.xml:37:9-40:58
+45            android:name="com.bapidas.news.ui.main.news.detail.NewsDetailsActivity"
+45-->/Users/android/AndroidStudioProjects/NewsApp/app/src/main/AndroidManifest.xml:38:13-68
+46            android:screenOrientation="unspecified"
+46-->/Users/android/AndroidStudioProjects/NewsApp/app/src/main/AndroidManifest.xml:39:13-52
+47            android:theme="@style/AppTheme.NewsDetail" />
+47-->/Users/android/AndroidStudioProjects/NewsApp/app/src/main/AndroidManifest.xml:40:13-55
+48
+49        <service
+49-->[androidx.room:room-runtime:2.2.4] /Users/android/.gradle/caches/transforms-2/files-2.1/04e108bcef2a485a91aa81e155ecb2c4/room-runtime-2.2.4/AndroidManifest.xml:25:9-27:40
+50            android:name="androidx.room.MultiInstanceInvalidationService"
+50-->[androidx.room:room-runtime:2.2.4] /Users/android/.gradle/caches/transforms-2/files-2.1/04e108bcef2a485a91aa81e155ecb2c4/room-runtime-2.2.4/AndroidManifest.xml:26:13-74
+51            android:exported="false" />
+51-->[androidx.room:room-runtime:2.2.4] /Users/android/.gradle/caches/transforms-2/files-2.1/04e108bcef2a485a91aa81e155ecb2c4/room-runtime-2.2.4/AndroidManifest.xml:27:13-37
+52
+53        <meta-data
+53-->[com.github.bumptech.glide:okhttp3-integration:4.11.0] /Users/android/.gradle/caches/transforms-2/files-2.1/3d874ea848e7bc87592c5d635dd81479/jetified-okhttp3-integration-4.11.0/AndroidManifest.xml:11:9-13:43
+54            android:name="com.bumptech.glide.integration.okhttp3.OkHttpGlideModule"
+54-->[com.github.bumptech.glide:okhttp3-integration:4.11.0] /Users/android/.gradle/caches/transforms-2/files-2.1/3d874ea848e7bc87592c5d635dd81479/jetified-okhttp3-integration-4.11.0/AndroidManifest.xml:12:13-84
+55            android:value="GlideModule" />
+55-->[com.github.bumptech.glide:okhttp3-integration:4.11.0] /Users/android/.gradle/caches/transforms-2/files-2.1/3d874ea848e7bc87592c5d635dd81479/jetified-okhttp3-integration-4.11.0/AndroidManifest.xml:13:13-40
+56
+57        <provider
+57-->[androidx.lifecycle:lifecycle-process:2.2.0] /Users/android/.gradle/caches/transforms-2/files-2.1/febbe65364d2e198ae3702a8db13c061/jetified-lifecycle-process-2.2.0/AndroidManifest.xml:25:9-29:43
+58            android:name="androidx.lifecycle.ProcessLifecycleOwnerInitializer"
+58-->[androidx.lifecycle:lifecycle-process:2.2.0] /Users/android/.gradle/caches/transforms-2/files-2.1/febbe65364d2e198ae3702a8db13c061/jetified-lifecycle-process-2.2.0/AndroidManifest.xml:26:13-79
+59            android:authorities="com.bapidas.news.lifecycle-process"
+59-->[androidx.lifecycle:lifecycle-process:2.2.0] /Users/android/.gradle/caches/transforms-2/files-2.1/febbe65364d2e198ae3702a8db13c061/jetified-lifecycle-process-2.2.0/AndroidManifest.xml:27:13-69
+60            android:exported="false"
+60-->[androidx.lifecycle:lifecycle-process:2.2.0] /Users/android/.gradle/caches/transforms-2/files-2.1/febbe65364d2e198ae3702a8db13c061/jetified-lifecycle-process-2.2.0/AndroidManifest.xml:28:13-37
+61            android:multiprocess="true" />
+61-->[androidx.lifecycle:lifecycle-process:2.2.0] /Users/android/.gradle/caches/transforms-2/files-2.1/febbe65364d2e198ae3702a8db13c061/jetified-lifecycle-process-2.2.0/AndroidManifest.xml:29:13-40
+62    </application>
+63
+64</manifest>
