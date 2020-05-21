@@ -1,0 +1,26 @@
+package com.bapidas.news.di.module.provide
+
+import com.bapidas.news.data.db.dao.NewsArticlesDao
+import com.bapidas.news.data.remote.api.NewsApi
+import com.bapidas.news.data.repository.NewsRepository
+import com.bapidas.news.data.repository.NewsRepositoryImpl
+import dagger.Module
+import dagger.Provides
+import retrofit2.Retrofit
+import javax.inject.Singleton
+
+@Module
+class ApiModule {
+    @Provides
+    @Singleton
+    fun provideNewsRepository(
+        retrofit: Retrofit,
+        newsArticlesDao: NewsArticlesDao
+    ): NewsRepository {
+        val newsApi = retrofit.create(NewsApi::class.java)
+        return NewsRepositoryImpl(
+            newsApi,
+            newsArticlesDao
+        )
+    }
+}
