@@ -1,6 +1,6 @@
-package com.bapidas.news.data.remote.response
+package com.bapidas.news.data.network.remote.response
 
-import com.bapidas.news.data.model.News
+import com.bapidas.news.data.network.model.News
 import com.google.gson.annotations.SerializedName
 
 data class NewsListResponse(

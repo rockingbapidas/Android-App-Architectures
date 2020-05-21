@@ -1,4 +1,4 @@
-package com.bapidas.news.ui.model
+package com.bapidas.news.data.db.model
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

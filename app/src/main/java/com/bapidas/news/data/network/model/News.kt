@@ -1,4 +1,4 @@
-package com.bapidas.news.data.model
+package com.bapidas.news.data.network.model
 
 import com.google.gson.annotations.SerializedName
 

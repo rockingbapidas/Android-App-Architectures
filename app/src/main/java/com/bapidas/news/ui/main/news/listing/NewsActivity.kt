@@ -6,13 +6,13 @@ import android.view.View
 import androidx.lifecycle.Observer
 import com.bapidas.news.R
 import com.bapidas.news.common.extensions.dp
+import com.bapidas.news.data.db.model.Article
 import com.bapidas.news.databinding.ActivityNewsBinding
 import com.bapidas.news.ui.base.activity.BaseToolbarActivity
 import com.bapidas.news.ui.base.adapter.callback.ItemViewListener
 import com.bapidas.news.ui.base.adapter.recycler.decoration.VerticalSpaceItemDecoration
 import com.bapidas.news.ui.main.news.detail.NewsDetailsActivity
 import com.bapidas.news.ui.main.news.listing.adapter.NewsAdapter
-import com.bapidas.news.ui.model.Article
 import kotlinx.android.synthetic.main.activity_news.*
 
 class NewsActivity : BaseToolbarActivity<ActivityNewsBinding, NewsViewModel>(), ItemViewListener {

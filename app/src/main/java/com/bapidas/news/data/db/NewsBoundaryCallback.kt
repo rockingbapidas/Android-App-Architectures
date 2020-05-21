@@ -1,8 +1,9 @@
-package com.bapidas.news.data.repository
+package com.bapidas.news.data.db
 
 import androidx.paging.PagedList
-import com.bapidas.news.data.repository.NewsRepositoryImpl.Companion.INITIAL_PAGE
-import com.bapidas.news.ui.model.Article
+import com.bapidas.news.data.db.model.Article
+import com.bapidas.news.data.network.repository.NewsRepositoryImpl
+import com.bapidas.news.data.network.repository.NewsRepositoryImpl.Companion.INITIAL_PAGE
 import timber.log.Timber
 
 class NewsBoundaryCallback constructor(

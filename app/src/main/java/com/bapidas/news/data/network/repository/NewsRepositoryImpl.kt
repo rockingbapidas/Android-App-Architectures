@@ -1,14 +1,15 @@
-package com.bapidas.news.data.repository
+package com.bapidas.news.data.network.repository
 
 import androidx.lifecycle.LiveData
 import androidx.paging.LivePagedListBuilder
 import androidx.paging.PagedList
 import com.bapidas.news.BuildConfig
+import com.bapidas.news.data.db.NewsBoundaryCallback
 import com.bapidas.news.data.db.dao.NewsArticlesDao
-import com.bapidas.news.data.remote.api.NewsApi
+import com.bapidas.news.data.db.model.Article
+import com.bapidas.news.data.network.remote.api.NewsApi
 import com.bapidas.news.network.disposeWith
 import com.bapidas.news.network.request
-import com.bapidas.news.ui.model.Article
 import io.reactivex.disposables.CompositeDisposable
 import timber.log.Timber
 
@@ -17,7 +18,11 @@ class NewsRepositoryImpl constructor(
     private val mNewsArticlesDao: NewsArticlesDao
 ) : NewsRepository {
     private val compositeDisposable by lazy { CompositeDisposable() }
-    private val mNewsBoundaryCallback by lazy { NewsBoundaryCallback(this) }
+    private val mNewsBoundaryCallback by lazy {
+        NewsBoundaryCallback(
+            this
+        )
+    }
     var totalNewsArticle = 0
     var loadedNewsArticle = 0
 

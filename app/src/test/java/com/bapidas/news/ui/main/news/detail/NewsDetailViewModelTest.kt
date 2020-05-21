@@ -4,7 +4,7 @@ import android.content.Intent
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.bapidas.news.RxImmediateSchedulerRule
 import com.bapidas.news.TestUtils
-import com.bapidas.news.data.model.News
+import com.bapidas.news.data.network.model.News
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import org.junit.Assert.assertNotNull

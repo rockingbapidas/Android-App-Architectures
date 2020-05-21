@@ -4,8 +4,8 @@ import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.MutableLiveData
 import com.bapidas.news.RxImmediateSchedulerRule
 import com.bapidas.news.TestUtils
-import com.bapidas.news.data.remote.response.NewsListResponse
-import com.bapidas.news.data.repository.NewsRepository
+import com.bapidas.news.data.network.remote.response.NewsListResponse
+import com.bapidas.news.data.network.repository.NewsRepository
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.nhaarman.mockito_kotlin.whenever

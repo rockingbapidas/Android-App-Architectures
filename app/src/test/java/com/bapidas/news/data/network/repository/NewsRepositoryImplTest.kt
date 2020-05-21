@@ -1,11 +1,11 @@
-package com.bapidas.news.data.repository
+package com.bapidas.news.data.network.repository
 
 import com.bapidas.news.BuildConfig
 import com.bapidas.news.RxImmediateSchedulerRule
 import com.bapidas.news.TestUtils
 import com.bapidas.news.data.db.dao.NewsArticlesDao
-import com.bapidas.news.data.remote.api.NewsApi
-import com.bapidas.news.data.remote.response.NewsListResponse
+import com.bapidas.news.data.network.remote.api.NewsApi
+import com.bapidas.news.data.network.remote.response.NewsListResponse
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.nhaarman.mockito_kotlin.whenever
