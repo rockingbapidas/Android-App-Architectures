@@ -5,9 +5,9 @@ Architecture - MVVM
 
 Database - Room
 
-Dependency Injection - Dagger
+Dependency Injection - Android Dagger 2
 
-Reactive Programming - RxJava
+Reactive Programming - RxJava 2, RxAndroid
 
 Network - Retrofit and Mockito
 
