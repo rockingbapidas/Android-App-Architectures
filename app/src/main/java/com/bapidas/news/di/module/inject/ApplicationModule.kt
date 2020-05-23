@@ -8,7 +8,6 @@ import com.bapidas.news.di.qualifier.ApplicationContext
 import dagger.Binds
 import dagger.Module
 import dagger.android.AndroidInjectionModule
-import javax.inject.Singleton
 
 @Module(
     includes = [AndroidInjectionModule::class, ActivityBuilderModule::class,
@@ -17,11 +16,9 @@ import javax.inject.Singleton
 )
 abstract class ApplicationModule {
     @Binds
-    @Singleton
     abstract fun bindApplication(application: NewsApplication): Application
 
     @Binds
-    @Singleton
     @ApplicationContext
     abstract fun bindApplicationContext(application: Application): Context
 }

@@ -8,14 +8,14 @@ import com.bapidas.news.R
 import com.bapidas.news.common.extensions.dp
 import com.bapidas.news.data.db.model.Article
 import com.bapidas.news.databinding.ActivityNewsBinding
-import com.bapidas.news.ui.base.activity.BaseToolbarActivity
+import com.bapidas.news.ui.base.activity.BaseActivity
 import com.bapidas.news.ui.base.adapter.callback.ItemViewListener
 import com.bapidas.news.ui.base.adapter.recycler.decoration.VerticalSpaceItemDecoration
 import com.bapidas.news.ui.main.news.detail.NewsDetailsActivity
 import com.bapidas.news.ui.main.news.listing.adapter.NewsAdapter
 import kotlinx.android.synthetic.main.activity_news.*
 
-class NewsActivity : BaseToolbarActivity<ActivityNewsBinding, NewsViewModel>(), ItemViewListener {
+class NewsActivity : BaseActivity<ActivityNewsBinding, NewsViewModel>(), ItemViewListener {
     override val layoutViewRes: Int = R.layout.activity_news
 
     override val viewModelClass: Class<NewsViewModel> = NewsViewModel::class.java
@@ -25,7 +25,8 @@ class NewsActivity : BaseToolbarActivity<ActivityNewsBinding, NewsViewModel>(), 
     override fun onViewModelCreated() {
         super.onViewModelCreated()
         viewModel.newsArticles.observe(this, Observer {
-            viewModel.isLoading.value = false
+            if (it.isNotEmpty())
+                viewModel.isLoading.value = false
             newsAdapter.submitList(it)
         })
     }

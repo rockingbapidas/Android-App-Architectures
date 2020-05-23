@@ -11,10 +11,10 @@ import com.bapidas.news.common.extensions.makeStatusBarTransparent
 import com.bapidas.news.common.extensions.setMarginTop
 import com.bapidas.news.data.db.model.Article
 import com.bapidas.news.databinding.ActivityNewsDetailBinding
-import com.bapidas.news.ui.base.activity.BaseToolbarActivity
+import com.bapidas.news.ui.base.activity.BaseActivity
 import kotlinx.android.synthetic.main.activity_news_detail.*
 
-class NewsDetailsActivity : BaseToolbarActivity<ActivityNewsDetailBinding, NewsDetailViewModel>() {
+class NewsDetailsActivity : BaseActivity<ActivityNewsDetailBinding, NewsDetailViewModel>() {
     override val layoutViewRes: Int = R.layout.activity_news_detail
 
     override val viewModelClass: Class<NewsDetailViewModel> = NewsDetailViewModel::class.java

@@ -9,10 +9,6 @@ private fun DependencyHandler.kapt(depName: String) {
     add("kapt", depName)
 }
 
-private fun DependencyHandler.compileOnly(depName: String) {
-    add("compileOnly", depName)
-}
-
 private fun DependencyHandler.testImplementation(depName: String) {
     add("testImplementation", depName)
 }

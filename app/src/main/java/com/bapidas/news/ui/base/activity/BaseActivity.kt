@@ -30,11 +30,11 @@ abstract class BaseActivity<D : ViewDataBinding, V : BaseActivityViewModel> : Ap
     protected abstract val layoutViewRes: Int
 
     protected abstract val viewModelClass: Class<V>
+
     lateinit var viewModel: V
         private set
 
-    protected lateinit var binding: D
-        private set
+    private lateinit var binding: D
 
     override fun onCreate(savedInstanceState: Bundle?) {
         AndroidInjection.inject(this)

@@ -5,9 +5,7 @@ import com.bapidas.news.di.module.inject.ApplicationModule
 import dagger.BindsInstance
 import dagger.Component
 import dagger.android.AndroidInjector
-import javax.inject.Singleton
 
-@Singleton
 @Component(modules = [ApplicationModule::class])
 interface ApplicationComponent : AndroidInjector<NewsApplication> {
     @Component.Builder

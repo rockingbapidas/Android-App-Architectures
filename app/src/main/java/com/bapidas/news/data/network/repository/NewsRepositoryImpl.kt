@@ -8,6 +8,7 @@ import com.bapidas.news.data.db.NewsBoundaryCallback
 import com.bapidas.news.data.db.dao.NewsArticlesDao
 import com.bapidas.news.data.db.model.Article
 import com.bapidas.news.data.network.remote.api.NewsApi
+import com.bapidas.news.data.network.remote.response.NewsListResponse
 import com.bapidas.news.network.disposeWith
 import com.bapidas.news.network.request
 import io.reactivex.disposables.CompositeDisposable
@@ -42,38 +43,45 @@ class NewsRepositoryImpl constructor(
         compositeDisposable.clear()
     }
 
-    fun loadNewsArticles(page: Int, latestLoad: Boolean = false) {
+    override fun loadNewsArticles(page: Int, latestLoad: Boolean) {
         mNewsApi.getNewsArticles(CATEGORY, PAGE_SIZE, page, BuildConfig.API_KEY)
             .request({
                 Timber.e("Loading ")
             }, {
                 Timber.e("Loaded ")
-            }, { it ->
-                if (latestLoad)
-                    loadedNewsArticle = mNewsArticlesDao.getNewsArticlesCount()
-                else
-                    loadedNewsArticle += PAGE_SIZE
-                totalNewsArticle = it.totalResults
-                val articles = it.articles.map {
-                    Article(
-                        it.publishedAt,
-                        it.title,
-                        it.description,
-                        it.urlToImage,
-                        it.source?.name
-                    )
-                }
-                mNewsArticlesDao.insert(articles)
+            }, {
+                cacheInLocal(latestLoad, it)
             }, {
                 Timber.e("Error %s", it.printStackTrace())
             })
             .disposeWith(compositeDisposable)
     }
 
-    fun loadNewsArticles() {
+    override fun loadNewsArticles() {
         val isItemPending = loadedNewsArticle < totalNewsArticle
         val nextPage = loadedNewsArticle.div(PAGE_SIZE).plus(1)
         if (isItemPending) loadNewsArticles(nextPage)
+    }
+
+    private fun cacheInLocal(
+        latestLoad: Boolean,
+        newsListResponse: NewsListResponse
+    ) {
+        if (latestLoad)
+            loadedNewsArticle = mNewsArticlesDao.getNewsArticlesCount()
+        else
+            loadedNewsArticle += PAGE_SIZE
+        totalNewsArticle = newsListResponse.totalResults
+        val articles = newsListResponse.articles.map {
+            Article(
+                it.publishedAt,
+                it.title,
+                it.description,
+                it.urlToImage,
+                it.source?.name
+            )
+        }
+        mNewsArticlesDao.insert(articles)
     }
 
     companion object {

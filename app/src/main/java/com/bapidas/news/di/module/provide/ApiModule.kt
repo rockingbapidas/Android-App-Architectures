@@ -7,12 +7,10 @@ import com.bapidas.news.data.network.repository.NewsRepositoryImpl
 import dagger.Module
 import dagger.Provides
 import retrofit2.Retrofit
-import javax.inject.Singleton
 
 @Module
 class ApiModule {
     @Provides
-    @Singleton
     fun provideNewsRepository(
         retrofit: Retrofit,
         newsArticlesDao: NewsArticlesDao

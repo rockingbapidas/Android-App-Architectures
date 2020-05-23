@@ -2,12 +2,12 @@ package com.bapidas.news.data.db
 
 import androidx.paging.PagedList
 import com.bapidas.news.data.db.model.Article
-import com.bapidas.news.data.network.repository.NewsRepositoryImpl
+import com.bapidas.news.data.network.repository.NewsRepository
 import com.bapidas.news.data.network.repository.NewsRepositoryImpl.Companion.INITIAL_PAGE
 import timber.log.Timber
 
 class NewsBoundaryCallback constructor(
-    private val mNewsRepository: NewsRepositoryImpl
+    private val mNewsRepository: NewsRepository
 ) : PagedList.BoundaryCallback<Article>() {
 
     private var latestLoad = true
