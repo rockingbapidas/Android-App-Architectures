@@ -1,7 +1,7 @@
 package com.bapidas.news.data.network.remote.api
 
+import com.bapidas.news.common.network.Urls
 import com.bapidas.news.data.network.remote.response.NewsListResponse
-import com.bapidas.news.network.Urls
 import io.reactivex.Single
 import retrofit2.http.GET
 import retrofit2.http.Query

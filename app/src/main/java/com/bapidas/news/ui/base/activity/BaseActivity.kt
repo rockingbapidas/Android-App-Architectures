@@ -10,14 +10,15 @@ import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.ViewModelProvider
 import com.bapidas.news.BR
 import com.bapidas.news.di.qualifier.ActivityContext
-import com.bapidas.news.ui.base.viewmodel.BaseActivityViewModel
+import com.bapidas.news.ui.base.viewmodel.BaseViewModel
 import dagger.android.AndroidInjection
 import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
 import dagger.android.HasAndroidInjector
+import io.reactivex.disposables.CompositeDisposable
 import javax.inject.Inject
 
-abstract class BaseActivity<D : ViewDataBinding, V : BaseActivityViewModel> : AppCompatActivity(),
+abstract class BaseActivity<D : ViewDataBinding, V : BaseViewModel> : AppCompatActivity(),
     HasAndroidInjector {
     @Inject
     protected lateinit var supportFragmentInjector: DispatchingAndroidInjector<Any>
@@ -35,6 +36,8 @@ abstract class BaseActivity<D : ViewDataBinding, V : BaseActivityViewModel> : Ap
         private set
 
     private lateinit var binding: D
+
+    internal val compositeDisposable: CompositeDisposable by lazy { CompositeDisposable() }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         AndroidInjection.inject(this)
@@ -92,6 +95,11 @@ abstract class BaseActivity<D : ViewDataBinding, V : BaseActivityViewModel> : Ap
     override fun onPause() {
         super.onPause()
         viewModel.handlePause()
+    }
+
+    override fun onDestroy() {
+        compositeDisposable.clear()
+        super.onDestroy()
     }
 
     override fun onSaveInstanceState(outState: Bundle) {

@@ -1,4 +1,4 @@
-package com.bapidas.news.network
+package com.bapidas.news.common.network
 
 import com.bapidas.news.BuildConfig
 

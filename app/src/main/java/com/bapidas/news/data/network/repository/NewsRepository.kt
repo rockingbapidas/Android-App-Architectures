@@ -1,15 +1,19 @@
 package com.bapidas.news.data.network.repository
 
-import androidx.lifecycle.LiveData
-import androidx.paging.PagedList
-import com.bapidas.news.data.db.model.Article
+import androidx.paging.DataSource
+import androidx.paging.ItemKeyedDataSource
+import com.bapidas.news.ui.model.Article
 
 interface NewsRepository {
-    fun getNewsArticles(): LiveData<PagedList<Article>>
+    fun getNewsArticles(): DataSource.Factory<Int, Article>
 
-    fun loadNewsArticles(page: Int, latestLoad: Boolean = false)
+    fun loadNewsArticles(
+        page: Int,
+        latestLoad: Boolean = false,
+        callback: ItemKeyedDataSource.LoadCallback<Article>? = null
+    )
 
-    fun loadNewsArticles()
+    fun loadMoreNewsArticles(callback: ItemKeyedDataSource.LoadCallback<Article>? = null)
 
     fun onCleared()
 }

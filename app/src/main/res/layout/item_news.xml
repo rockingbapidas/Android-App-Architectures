@@ -5,7 +5,7 @@
 
         <variable
             name="item"
-            type="com.bapidas.news.data.db.model.Article" />
+            type="com.bapidas.news.ui.model.Article" />
 
         <variable
             name="callback"

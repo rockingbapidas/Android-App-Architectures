@@ -8,7 +8,7 @@ plugins {
 android {
     compileSdkVersion(Apps.compileSdk)
     flavorDimensions("default")
-    dataBinding.isEnabled = true
+    buildFeatures.dataBinding = true
     kotlinOptions.jvmTarget = "1.8"
 
     buildTypes {
@@ -48,6 +48,9 @@ android {
         )
         buildConfigField(
             "String", ConfigField.API_KEY, "\"${Apps.apiKey}\""
+        )
+        buildConfigField(
+            "Boolean", ConfigField.LOCAL_CACHE, Apps.localCache
         )
     }
 

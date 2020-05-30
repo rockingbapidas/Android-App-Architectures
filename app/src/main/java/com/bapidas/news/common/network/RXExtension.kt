@@ -1,4 +1,4 @@
-package com.bapidas.news.network
+package com.bapidas.news.common.network
 
 import io.reactivex.Scheduler
 import io.reactivex.Single

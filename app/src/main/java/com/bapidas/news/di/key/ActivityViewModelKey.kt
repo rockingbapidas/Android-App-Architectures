@@ -1,6 +1,6 @@
 package com.bapidas.news.di.key
 
-import com.bapidas.news.ui.base.viewmodel.BaseActivityViewModel
+import com.bapidas.news.ui.base.viewmodel.BaseViewModel
 import dagger.MapKey
 import kotlin.reflect.KClass
 
@@ -8,4 +8,4 @@ import kotlin.reflect.KClass
 @Retention(AnnotationRetention.RUNTIME)
 @MapKey
 @MustBeDocumented
-annotation class ActivityViewModelKey(val value: KClass<out BaseActivityViewModel>)
+annotation class ActivityViewModelKey(val value: KClass<out BaseViewModel>)

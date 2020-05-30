@@ -48,6 +48,7 @@ fun DependencyHandler.room() {
 
 fun DependencyHandler.paging() {
     implementation(Dependencies.paging_runtime)
+    implementation(Dependencies.paging_common)
     implementation(Dependencies.paging_rxjava2)
 }
 

@@ -1,5 +1,5 @@
 object Versions {
-    const val gradle = "3.6.1"
+    const val gradle = "4.0.0"
     const val kotlin = "1.3.61"
     const val appcompat = "1.1.0"
     const val core_ktx = "1.2.0"
@@ -81,6 +81,7 @@ object Dependencies {
     const val room_rxjava2 = "androidx.room:room-rxjava2:${Versions.room}"
 
     const val paging_runtime = "androidx.paging:paging-runtime-ktx:${Versions.paging}"
+    const val paging_common = "androidx.paging:paging-common-ktx:${Versions.paging}"
     const val paging_rxjava2 = "androidx.paging:paging-rxjava2-ktx:${Versions.paging}"
 
     const val glide = "com.github.bumptech.glide:glide:${Versions.glide}"

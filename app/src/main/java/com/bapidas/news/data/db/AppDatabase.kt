@@ -7,12 +7,12 @@ import androidx.room.RoomDatabase
 import androidx.sqlite.db.SupportSQLiteDatabase
 import com.bapidas.news.BuildConfig
 import com.bapidas.news.data.db.dao.NewsArticlesDao
-import com.bapidas.news.data.db.model.Article
+import com.bapidas.news.data.db.model.ArticleEntity
 import timber.log.Timber
 
 @Database(
     entities = [
-        Article::class
+        ArticleEntity::class
     ],
     version = BuildConfig.DATABASE_VERSION
 )

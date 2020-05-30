@@ -9,9 +9,9 @@ import com.bapidas.news.R
 import com.bapidas.news.common.extensions.getStatusBarHeight
 import com.bapidas.news.common.extensions.makeStatusBarTransparent
 import com.bapidas.news.common.extensions.setMarginTop
-import com.bapidas.news.data.db.model.Article
 import com.bapidas.news.databinding.ActivityNewsDetailBinding
 import com.bapidas.news.ui.base.activity.BaseActivity
+import com.bapidas.news.ui.model.Article
 import kotlinx.android.synthetic.main.activity_news_detail.*
 
 class NewsDetailsActivity : BaseActivity<ActivityNewsDetailBinding, NewsDetailViewModel>() {

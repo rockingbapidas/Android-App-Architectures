@@ -1,9 +1,9 @@
-package com.bapidas.news.data.db
+package com.bapidas.news.ui.main.news.listing.paging
 
 import androidx.paging.PagedList
-import com.bapidas.news.data.db.model.Article
 import com.bapidas.news.data.network.repository.NewsRepository
 import com.bapidas.news.data.network.repository.NewsRepositoryImpl.Companion.INITIAL_PAGE
+import com.bapidas.news.ui.model.Article
 import timber.log.Timber
 
 class NewsBoundaryCallback constructor(
@@ -31,6 +31,6 @@ class NewsBoundaryCallback constructor(
     override fun onItemAtEndLoaded(itemAtEnd: Article) {
         super.onItemAtEndLoaded(itemAtEnd)
         Timber.v("onItemAtEndLoaded")
-        mNewsRepository.loadNewsArticles()
+        mNewsRepository.loadMoreNewsArticles()
     }
 }
