@@ -41,8 +41,32 @@ class NewsRepositoryImpl constructor(
         return mNewsArticlesDao.getNewsArticlesCount()
     }
 
-    override fun deleteNewsArticle(id: String) {
-        mNewsArticlesDao.deleteNewsArticle(id)
+    override fun deleteNewsArticle(articles: Article) {
+        articles.run {
+            mNewsArticlesDao.delete(
+                ArticleEntity(
+                    publishedAt,
+                    title,
+                    description,
+                    urlToImage,
+                    sourceName
+                )
+            )
+        }
+    }
+
+    override fun deleteNewsArticles(articles: List<Article>) {
+        articles.run {
+            mNewsArticlesDao.delete(map {
+                ArticleEntity(
+                    it.publishedAt,
+                    it.title,
+                    it.description,
+                    it.urlToImage,
+                    it.sourceName
+                )
+            })
+        }
     }
 
     override fun saveNewsArticles(articles: List<News>) {

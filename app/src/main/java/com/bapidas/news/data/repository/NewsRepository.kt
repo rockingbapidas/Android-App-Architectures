@@ -13,7 +13,9 @@ interface NewsRepository {
 
     fun getNewsArticleTotalCount(): Int
 
-    fun deleteNewsArticle(id: String)
+    fun deleteNewsArticle(articles: Article)
+
+    fun deleteNewsArticles(articles: List<Article>)
 
     fun saveNewsArticles(articles: List<News>)
 

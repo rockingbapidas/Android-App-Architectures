@@ -4,7 +4,6 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.paging.LivePagedListBuilder
 import androidx.paging.PagedList
-import androidx.paging.RxPagedListBuilder
 import com.bapidas.news.BuildConfig
 import com.bapidas.news.data.repository.NewsRepository
 import com.bapidas.news.data.repository.NewsRepositoryImpl
@@ -13,7 +12,6 @@ import com.bapidas.news.ui.base.viewmodel.BaseViewModel
 import com.bapidas.news.ui.main.news.listing.paging.NewsBoundaryCallback
 import com.bapidas.news.ui.main.news.listing.paging.NewsDataSourceFactory
 import com.bapidas.news.ui.model.Article
-import io.reactivex.Observable
 import javax.inject.Inject
 
 @ActivityScope
@@ -25,10 +23,6 @@ class NewsViewModel @Inject constructor(private val mNewsRepository: NewsReposit
             mNewsRepository.getNewsArticles()
         else
             NewsDataSourceFactory(mNewsRepository, compositeDisposable)
-    }
-
-    private val mNewsBoundaryCallback by lazy {
-        NewsBoundaryCallback(mNewsRepository, compositeDisposable)
     }
 
     private val mPagedListConfig by lazy {
@@ -49,21 +43,12 @@ class NewsViewModel @Inject constructor(private val mNewsRepository: NewsReposit
 
     private fun buildLiveDataList(): LiveData<PagedList<Article>> {
         return if (BuildConfig.LOCAL_CACHE) {
+            val mNewsBoundaryCallback = NewsBoundaryCallback(mNewsRepository, compositeDisposable)
             LivePagedListBuilder(mNewsDataSourceFactory, mPagedListConfig)
                 .setBoundaryCallback(mNewsBoundaryCallback)
                 .build()
         } else {
             LivePagedListBuilder(mNewsDataSourceFactory, mPagedListConfig).build()
-        }
-    }
-
-    private fun buildRxDataList(): Observable<PagedList<Article>> {
-        return if (BuildConfig.LOCAL_CACHE) {
-            RxPagedListBuilder(mNewsDataSourceFactory, mPagedListConfig)
-                .setBoundaryCallback(mNewsBoundaryCallback)
-                .buildObservable()
-        } else {
-            RxPagedListBuilder(mNewsDataSourceFactory, mPagedListConfig).buildObservable()
         }
     }
 }
