@@ -25,31 +25,31 @@ fun DependencyHandler.dagger() {
 }
 
 fun DependencyHandler.rxJava() {
-    implementation(Dependencies.rxjava)
-    implementation(Dependencies.rxandroid)
+    implementation(Dependencies.rx_java)
+    implementation(Dependencies.rx_android)
 }
 
 fun DependencyHandler.retrofit() {
     implementation(Dependencies.retrofit)
-    implementation(Dependencies.retrofit_rxjava)
+    implementation(Dependencies.retrofit_rx_java)
     implementation(Dependencies.retrofit_gson)
 }
 
 fun DependencyHandler.okHttp() {
     implementation(Dependencies.logging_interceptor)
-    implementation(Dependencies.okhttp_urlconnection)
+    implementation(Dependencies.ok_http_url_connection)
 }
 
 fun DependencyHandler.room() {
     implementation(Dependencies.room_runtime)
     kapt(Dependencies.room_compiler)
-    implementation(Dependencies.room_rxjava2)
+    implementation(Dependencies.room_rx_java)
 }
 
 fun DependencyHandler.paging() {
     implementation(Dependencies.paging_runtime)
     implementation(Dependencies.paging_common)
-    implementation(Dependencies.paging_rxjava2)
+    implementation(Dependencies.paging_rx_java)
 }
 
 fun DependencyHandler.lifeCycle() {
@@ -75,8 +75,8 @@ fun DependencyHandler.androidx() {
     implementation(Dependencies.material_component)
     implementation(Dependencies.core_ktx)
     implementation(Dependencies.app_compat)
-    implementation(Dependencies.multidex)
-    implementation(Dependencies.constraintlayout)
+    implementation(Dependencies.multi_dex)
+    implementation(Dependencies.constraint_layout)
     //Test Libraries
     androidTestImplementation(TestDependencies.test_runner)
     androidTestImplementation(TestDependencies.test_ext_junit)

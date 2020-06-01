@@ -10,7 +10,7 @@ object Apps {
     const val domain = "newsapi.org"
     const val apiDomain = "http://newsapi.org"
     const val apiKey = "59b23dbaede34a2488fe2d4da93b9ffb"
-    const val localCache = "false"
+    const val localCache = "true"
 }
 
 object Debug {

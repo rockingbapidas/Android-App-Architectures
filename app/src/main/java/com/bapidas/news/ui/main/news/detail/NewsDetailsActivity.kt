@@ -6,10 +6,10 @@ import android.view.View
 import androidx.core.app.ActivityOptionsCompat
 import androidx.core.util.Pair
 import com.bapidas.news.R
-import com.bapidas.news.common.extensions.getStatusBarHeight
-import com.bapidas.news.common.extensions.makeStatusBarTransparent
-import com.bapidas.news.common.extensions.setMarginTop
 import com.bapidas.news.databinding.ActivityNewsDetailBinding
+import com.bapidas.news.extensions.getStatusBarHeight
+import com.bapidas.news.extensions.makeStatusBarTransparent
+import com.bapidas.news.extensions.setMarginTop
 import com.bapidas.news.ui.base.activity.BaseActivity
 import com.bapidas.news.ui.model.Article
 import kotlinx.android.synthetic.main.activity_news_detail.*

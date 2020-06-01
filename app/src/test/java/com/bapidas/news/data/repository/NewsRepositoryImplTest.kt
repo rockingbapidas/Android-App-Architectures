@@ -1,4 +1,4 @@
-package com.bapidas.news.data.network.repository
+package com.bapidas.news.data.repository
 
 import com.bapidas.news.BuildConfig
 import com.bapidas.news.RxImmediateSchedulerRule

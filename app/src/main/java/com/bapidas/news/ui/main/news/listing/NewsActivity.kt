@@ -5,8 +5,8 @@ import android.content.Intent
 import android.view.View
 import androidx.lifecycle.Observer
 import com.bapidas.news.R
-import com.bapidas.news.common.extensions.dp
 import com.bapidas.news.databinding.ActivityNewsBinding
+import com.bapidas.news.extensions.dp
 import com.bapidas.news.ui.base.activity.BaseActivity
 import com.bapidas.news.ui.base.adapter.callback.ItemViewListener
 import com.bapidas.news.ui.base.adapter.recycler.decoration.VerticalSpaceItemDecoration
@@ -27,10 +27,8 @@ class NewsActivity : BaseActivity<ActivityNewsBinding, NewsViewModel>(), ItemVie
         super.onViewModelCreated()
         viewModel.newsArticles.observe(this, Observer {
             Timber.e("newsArticles %s", it.loadedCount)
-            if (it.isNotEmpty())
-                viewModel.isLoading.value = false
+            if (it.isNotEmpty()) viewModel.isLoading.value = false
             newsAdapter.submitList(it)
-            newsAdapter.notifyDataSetChanged()
         })
     }
 

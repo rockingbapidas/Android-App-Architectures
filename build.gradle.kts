@@ -17,7 +17,7 @@ allprojects {
     repositories {
         google()
         jcenter()
-        maven { url = uri(RepoUrl.jitpack) }
+        maven { url = uri(RepoUrl.jit_pack) }
     }
 }
 

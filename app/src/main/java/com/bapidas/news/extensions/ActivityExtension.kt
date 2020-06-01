@@ -1,4 +1,4 @@
-package com.bapidas.news.common.extensions
+package com.bapidas.news.extensions
 
 import android.app.Activity
 import android.os.Build

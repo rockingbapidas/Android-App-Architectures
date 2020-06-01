@@ -1,4 +1,4 @@
-package com.bapidas.news.common.extensions
+package com.bapidas.news.extensions
 
 import android.view.View
 import android.view.ViewGroup
