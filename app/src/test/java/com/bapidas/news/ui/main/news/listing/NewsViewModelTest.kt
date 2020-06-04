@@ -8,6 +8,7 @@ import com.bapidas.news.data.repository.NewsRepository
 import com.bapidas.news.ui.model.Article
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
+import com.google.gson.reflect.TypeToken
 import com.nhaarman.mockito_kotlin.whenever
 import org.junit.Before
 import org.junit.Rule
@@ -41,7 +42,7 @@ class NewsViewModelTest {
         mNewsViewModel = NewsViewModel(mNewsRepository)
         mGson = GsonBuilder().create()
         val data = TestUtils.readFromFile("/mock_ui_list.json")
-        //mockData = mGson.fromJson(data, TypeToken<List<Article>>(){}.type)
+        mockData = mGson.fromJson(data, object : TypeToken<List<Article>>() {}.type)
     }
 
     @Test
@@ -49,7 +50,7 @@ class NewsViewModelTest {
         assertEquals(true, mNewsViewModel.isLoading.value)
 
         val liveData = MutableLiveData(TestUtils.mockPagedList(mockData))
-        //whenever(mNewsRepository.getNewsArticles()).thenReturn(liveData)
+        //whenever(mNewsViewModel.buildLiveDataList()).thenReturn(liveData)
 
         assertNotNull(mNewsViewModel.newsArticles)
         assertNotNull(mNewsViewModel.newsArticles.value)

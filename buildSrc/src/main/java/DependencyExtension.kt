@@ -36,6 +36,7 @@ fun DependencyHandler.retrofit() {
 }
 
 fun DependencyHandler.okHttp() {
+    implementation(Dependencies.ok_http)
     implementation(Dependencies.logging_interceptor)
     implementation(Dependencies.ok_http_url_connection)
 }
@@ -44,17 +45,19 @@ fun DependencyHandler.room() {
     implementation(Dependencies.room_runtime)
     kapt(Dependencies.room_compiler)
     implementation(Dependencies.room_rx_java)
+    //Test Libraries
+    testImplementation(Dependencies.room_testing)
 }
 
 fun DependencyHandler.paging() {
     implementation(Dependencies.paging_runtime)
-    implementation(Dependencies.paging_common)
     implementation(Dependencies.paging_rx_java)
+    //Test Libraries
+    testImplementation(Dependencies.paging_common)
 }
 
 fun DependencyHandler.lifeCycle() {
     implementation(Dependencies.extensions)
-    implementation(Dependencies.reactive_streams)
     implementation(Dependencies.view_model)
 }
 
@@ -97,7 +100,10 @@ fun DependencyHandler.uiLibrary() {
     implementation(Dependencies.shimmer)
 }
 
-fun DependencyHandler.miscellaneousSdks() {
+fun DependencyHandler.gson() {
     implementation(Dependencies.gson)
+}
+
+fun DependencyHandler.timber() {
     implementation(Dependencies.timber)
 }

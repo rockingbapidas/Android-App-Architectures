@@ -1,6 +1,6 @@
 object Versions {
     const val gradle = "4.0.0"
-    const val kotlin = "1.3.61"
+    const val kotlin = "1.3.72"
     const val appcompat = "1.1.0"
     const val core_ktx = "1.2.0"
     const val material_component = "1.0.0"
@@ -55,16 +55,15 @@ object Dependencies {
 
     const val extensions = "androidx.lifecycle:lifecycle-extensions:${Versions.lifecycle}"
     const val view_model = "androidx.lifecycle:lifecycle-viewmodel:${Versions.lifecycle}"
-    const val reactive_streams =
-        "androidx.lifecycle:lifecycle-reactivestreams:${Versions.lifecycle}"
 
     const val room_runtime = "androidx.room:room-runtime:${Versions.room}"
     const val room_compiler = "androidx.room:room-compiler:${Versions.room}"
     const val room_rx_java = "androidx.room:room-rxjava2:${Versions.room}"
+    const val room_testing = "androidx.room:room-testing:${Versions.room}"
 
     const val paging_runtime = "androidx.paging:paging-runtime:${Versions.paging}"
-    const val paging_common = "androidx.paging:paging-common:${Versions.paging}"
     const val paging_rx_java = "androidx.paging:paging-rxjava2:${Versions.paging}"
+    const val paging_common = "androidx.paging:paging-common:${Versions.paging}"
 
     const val dagger_android = "com.google.dagger:dagger-android:${Versions.dagger}"
     const val dagger_compiler = "com.google.dagger:dagger-compiler:${Versions.dagger}"
@@ -78,6 +77,7 @@ object Dependencies {
     const val retrofit_rx_java = "com.squareup.retrofit2:adapter-rxjava2:${Versions.retrofit}"
     const val retrofit_gson = "com.squareup.retrofit2:converter-gson:${Versions.retrofit}"
 
+    const val ok_http = "com.squareup.okhttp3:okhttp:${Versions.ok_http}"
     const val ok_http_url_connection =
         "com.squareup.okhttp3:okhttp-urlconnection:${Versions.ok_http}"
     const val logging_interceptor = "com.squareup.okhttp3:logging-interceptor:${Versions.ok_http}"
