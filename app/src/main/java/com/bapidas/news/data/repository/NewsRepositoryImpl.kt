@@ -4,9 +4,9 @@ import androidx.paging.DataSource
 import com.bapidas.news.BuildConfig
 import com.bapidas.news.data.db.dao.NewsArticlesDao
 import com.bapidas.news.data.db.model.ArticleEntity
+import com.bapidas.news.data.network.api.NewsApi
 import com.bapidas.news.data.network.model.News
-import com.bapidas.news.data.network.remote.api.NewsApi
-import com.bapidas.news.data.network.remote.response.NewsListResponse
+import com.bapidas.news.data.network.response.NewsListResponse
 import com.bapidas.news.ui.model.Article
 import io.reactivex.Single
 import timber.log.Timber

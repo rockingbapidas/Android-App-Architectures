@@ -4,7 +4,7 @@ import android.content.Intent
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.bapidas.news.RxImmediateSchedulerRule
 import com.bapidas.news.TestUtils
-import com.bapidas.news.data.network.model.News
+import com.bapidas.news.ui.model.Article
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import org.junit.Assert.assertNotNull
@@ -25,15 +25,15 @@ class NewsDetailViewModelTest {
 
     lateinit var mNewsDetailViewModel: NewsDetailViewModel
     lateinit var mGson: Gson
-    lateinit var mockData: News
+    lateinit var mockData: Article
 
     @Before
     fun setUp() {
         MockitoAnnotations.initMocks(this)
         mNewsDetailViewModel = NewsDetailViewModel()
         mGson = GsonBuilder().create()
-        val data = TestUtils.readFromFile("/mock_object.json")
-        mockData = mGson.fromJson(data, News::class.java)
+        val data = TestUtils.readFromFile("/mock_ui_object.json")
+        mockData = mGson.fromJson(data, Article::class.java)
     }
 
     @Test
@@ -44,7 +44,7 @@ class NewsDetailViewModelTest {
 
         mNewsDetailViewModel.handleIntent(intent)
 
-        assertNotNull(mNewsDetailViewModel.news)
+        assertNotNull(mNewsDetailViewModel.article)
     }
 
     @Test
@@ -53,6 +53,6 @@ class NewsDetailViewModelTest {
 
         mNewsDetailViewModel.handleIntent(intent)
 
-        assertNull(mNewsDetailViewModel.news.value)
+        assertNull(mNewsDetailViewModel.article.value)
     }
 }

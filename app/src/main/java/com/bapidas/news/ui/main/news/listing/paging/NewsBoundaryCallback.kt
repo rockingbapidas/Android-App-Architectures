@@ -1,7 +1,7 @@
 package com.bapidas.news.ui.main.news.listing.paging
 
 import androidx.paging.PagedList
-import com.bapidas.news.data.network.remote.response.NewsListResponse
+import com.bapidas.news.data.network.response.NewsListResponse
 import com.bapidas.news.data.repository.NewsRepository
 import com.bapidas.news.data.repository.NewsRepositoryImpl
 import com.bapidas.news.data.repository.NewsRepositoryImpl.Companion.INITIAL_PAGE

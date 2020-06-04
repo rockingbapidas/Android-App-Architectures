@@ -18,21 +18,6 @@ import javax.inject.Inject
 class NewsViewModel @Inject constructor(private val mNewsRepository: NewsRepository) :
     BaseViewModel() {
 
-    private val mNewsDataSourceFactory by lazy {
-        if (BuildConfig.LOCAL_CACHE)
-            mNewsRepository.getNewsArticles()
-        else
-            NewsDataSourceFactory(mNewsRepository, compositeDisposable)
-    }
-
-    private val mPagedListConfig by lazy {
-        PagedList.Config.Builder()
-            .setPageSize(NewsRepositoryImpl.PAGE_SIZE)
-            .setEnablePlaceholders(false)
-            .setPrefetchDistance(5)
-            .build()
-    }
-
     //Progress live data
     val isLoading = MutableLiveData(true)
 
@@ -42,6 +27,19 @@ class NewsViewModel @Inject constructor(private val mNewsRepository: NewsReposit
     }
 
     private fun buildLiveDataList(): LiveData<PagedList<Article>> {
+        val mNewsDataSourceFactory by lazy {
+            if (BuildConfig.LOCAL_CACHE)
+                mNewsRepository.getNewsArticles()
+            else
+                NewsDataSourceFactory(mNewsRepository, compositeDisposable)
+        }
+        val mPagedListConfig by lazy {
+            PagedList.Config.Builder()
+                .setPageSize(NewsRepositoryImpl.PAGE_SIZE)
+                .setEnablePlaceholders(false)
+                .setPrefetchDistance(5)
+                .build()
+        }
         return if (BuildConfig.LOCAL_CACHE) {
             val mNewsBoundaryCallback = NewsBoundaryCallback(mNewsRepository, compositeDisposable)
             LivePagedListBuilder(mNewsDataSourceFactory, mPagedListConfig)

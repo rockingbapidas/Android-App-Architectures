@@ -4,8 +4,8 @@ import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.MutableLiveData
 import com.bapidas.news.RxImmediateSchedulerRule
 import com.bapidas.news.TestUtils
-import com.bapidas.news.data.network.remote.response.NewsListResponse
 import com.bapidas.news.data.repository.NewsRepository
+import com.bapidas.news.ui.model.Article
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.nhaarman.mockito_kotlin.whenever
@@ -33,23 +33,23 @@ class NewsViewModelTest {
 
     lateinit var mGson: Gson
     lateinit var mNewsViewModel: NewsViewModel
-    lateinit var mockData: NewsListResponse
+    lateinit var mockData: List<Article>
 
     @Before
     fun setUp() {
         MockitoAnnotations.initMocks(this)
         mNewsViewModel = NewsViewModel(mNewsRepository)
         mGson = GsonBuilder().create()
-        val data = TestUtils.readFromFile("/mock_response.json")
-        mockData = mGson.fromJson(data, NewsListResponse::class.java)
+        val data = TestUtils.readFromFile("/mock_ui_list.json")
+        //mockData = mGson.fromJson(data, TypeToken<List<Article>>(){}.type)
     }
 
     @Test
     fun `Given NewsRepository returns data, when getNewsArticles() called, then update live data`() {
         assertEquals(true, mNewsViewModel.isLoading.value)
 
-        val liveData = MutableLiveData(TestUtils.mockPagedList(mockData.articles))
-        whenever(mNewsRepository.getNewsArticles()).thenReturn(liveData)
+        val liveData = MutableLiveData(TestUtils.mockPagedList(mockData))
+        //whenever(mNewsRepository.getNewsArticles()).thenReturn(liveData)
 
         assertNotNull(mNewsViewModel.newsArticles)
         assertNotNull(mNewsViewModel.newsArticles.value)

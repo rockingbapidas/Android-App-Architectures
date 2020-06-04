@@ -3,11 +3,11 @@ package com.bapidas.news.ui.main.news.listing.adapter
 import androidx.recyclerview.widget.DiffUtil
 import com.bapidas.news.R
 import com.bapidas.news.ui.base.adapter.callback.ItemViewListener
-import com.bapidas.news.ui.base.adapter.recycler.BaseListAdapter
+import com.bapidas.news.ui.base.adapter.recycler.BasePageListAdapter
 import com.bapidas.news.ui.model.Article
 
 class NewsAdapter(val callback: ItemViewListener) :
-    BaseListAdapter<Article>(NEWS_COMPARATOR) {
+    BasePageListAdapter<Article>(NEWS_COMPARATOR) {
 
     override fun getCallbackForPosition(position: Int): Any = callback
 

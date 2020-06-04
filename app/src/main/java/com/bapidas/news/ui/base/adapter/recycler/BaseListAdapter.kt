@@ -4,11 +4,11 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
-import androidx.paging.PagedListAdapter
 import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 
 abstract class BaseListAdapter<T>(diffCallback: DiffUtil.ItemCallback<T>) :
-    PagedListAdapter<T, BaseViewHolder<T>>(diffCallback) {
+    ListAdapter<T, BaseViewHolder<T>>(diffCallback) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseViewHolder<T> {
         val layoutInflater = LayoutInflater.from(parent.context)
@@ -28,5 +28,5 @@ abstract class BaseListAdapter<T>(diffCallback: DiffUtil.ItemCallback<T>) :
 
     protected abstract fun getLayoutIdForPosition(position: Int): Int
 
-    fun getItemAt(position: Int): T? = getItem(position)
+    fun getItemAt(position: Int): T = getItem(position)
 }

@@ -1,7 +1,7 @@
 package com.bapidas.news.di.module.provide
 
 import com.bapidas.news.data.db.dao.NewsArticlesDao
-import com.bapidas.news.data.network.remote.api.NewsApi
+import com.bapidas.news.data.network.api.NewsApi
 import com.bapidas.news.data.repository.NewsRepository
 import com.bapidas.news.data.repository.NewsRepositoryImpl
 import dagger.Module

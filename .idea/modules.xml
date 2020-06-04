@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/ByjusAssignment.iml" filepath="$PROJECT_DIR$/ByjusAssignment.iml" group="ByjusAssignment" />
       <module fileurl="file://$PROJECT_DIR$/NewsApp.iml" filepath="$PROJECT_DIR$/NewsApp.iml" group="NewsApp" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/NewsApp_buildSrc.iml" filepath="$PROJECT_DIR$/.idea/modules/NewsApp_buildSrc.iml" group="NewsApp/NewsApp_buildSrc" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" group="NewsApp/app" />
       <module fileurl="file://$PROJECT_DIR$/buildSrc/buildSrc.iml" filepath="$PROJECT_DIR$/buildSrc/buildSrc.iml" group="NewsApp/buildSrc" />
     </modules>
