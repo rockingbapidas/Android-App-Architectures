@@ -18,6 +18,30 @@ private fun DependencyHandler.androidTestImplementation(depName: String) {
 }
 
 //Dependency Handler extension
+fun DependencyHandler.kotlin() {
+    implementation(Dependencies.kotlin_stdlib)
+    implementation(Dependencies.kotlin_reflect)
+    //Test Libraries
+    testImplementation(TestDependencies.kotlin_test)
+}
+
+fun DependencyHandler.androidx() {
+    implementation(Dependencies.material_component)
+    implementation(Dependencies.core_ktx)
+    implementation(Dependencies.app_compat)
+    implementation(Dependencies.multi_dex)
+    implementation(Dependencies.constraint_layout)
+    //Test Libraries
+    androidTestImplementation(TestDependencies.test_runner)
+    androidTestImplementation(TestDependencies.test_ext_junit)
+    androidTestImplementation(TestDependencies.test_espresso_core)
+    testImplementation(TestDependencies.arch_core_testing)
+}
+
+fun DependencyHandler.shimmer() {
+    implementation(Dependencies.shimmer)
+}
+
 fun DependencyHandler.dagger() {
     implementation(Dependencies.dagger_android)
     kapt(Dependencies.dagger_compiler)
@@ -56,6 +80,11 @@ fun DependencyHandler.paging() {
     testImplementation(Dependencies.paging_common)
 }
 
+fun DependencyHandler.workManager() {
+    implementation(Dependencies.work_runtime)
+    implementation(Dependencies.work_rx_java)
+}
+
 fun DependencyHandler.lifeCycle() {
     implementation(Dependencies.extensions)
     implementation(Dependencies.view_model)
@@ -67,24 +96,12 @@ fun DependencyHandler.glide() {
     implementation(Dependencies.glide_integration)
 }
 
-fun DependencyHandler.kotlin() {
-    implementation(Dependencies.kotlin_stdlib)
-    implementation(Dependencies.kotlin_reflect)
-    //Test Libraries
-    testImplementation(TestDependencies.kotlin_test)
+fun DependencyHandler.gson() {
+    implementation(Dependencies.gson)
 }
 
-fun DependencyHandler.androidx() {
-    implementation(Dependencies.material_component)
-    implementation(Dependencies.core_ktx)
-    implementation(Dependencies.app_compat)
-    implementation(Dependencies.multi_dex)
-    implementation(Dependencies.constraint_layout)
-    //Test Libraries
-    androidTestImplementation(TestDependencies.test_runner)
-    androidTestImplementation(TestDependencies.test_ext_junit)
-    androidTestImplementation(TestDependencies.test_espresso_core)
-    testImplementation(TestDependencies.arch_core_testing)
+fun DependencyHandler.timber() {
+    implementation(Dependencies.timber)
 }
 
 fun DependencyHandler.jUnit() {
@@ -94,16 +111,4 @@ fun DependencyHandler.jUnit() {
 fun DependencyHandler.mockito() {
     testImplementation(TestDependencies.mockito_kotlin)
     testImplementation(TestDependencies.mockito_inline)
-}
-
-fun DependencyHandler.uiLibrary() {
-    implementation(Dependencies.shimmer)
-}
-
-fun DependencyHandler.gson() {
-    implementation(Dependencies.gson)
-}
-
-fun DependencyHandler.timber() {
-    implementation(Dependencies.timber)
 }

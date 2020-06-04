@@ -10,9 +10,17 @@ import dagger.Module
 import dagger.android.AndroidInjectionModule
 
 @Module(
-    includes = [AndroidInjectionModule::class, ActivityBuilderModule::class,
-        TimberModule::class, RxJavaModule::class, NetworkModule::class,
-        ApiModule::class, RoomModule::class]
+    includes = [AndroidInjectionModule::class,
+        ActivityBuilderModule::class,
+        ServiceBuilderModule::class,
+        ReceiverBuilderModule::class,
+        WorkerBuilderModule::class,
+        TimberModule::class,
+        RoomModule::class,
+        RxJavaModule::class,
+        NetworkModule::class,
+        ApiModule::class
+    ]
 )
 abstract class ApplicationModule {
     @Binds

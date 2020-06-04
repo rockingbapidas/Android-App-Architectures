@@ -100,6 +100,7 @@ dependencies {
     lifeCycle()
     room()
     paging()
+    workManager()
     retrofit()
     okHttp()
     rxJava()
@@ -107,7 +108,7 @@ dependencies {
     glide()
     gson()
     timber()
-    uiLibrary()
+    shimmer()
     jUnit()
     mockito()
 }

@@ -14,6 +14,8 @@ abstract class BaseViewModel : ViewModel() {
 
     open fun handleIntent(intent: Intent) {}
 
+    open fun handleArguments(bundle: Bundle) {}
+
     open fun handleResult(requestCode: Int, resultCode: Int, data: Intent?) {}
 
     open fun handlePermissionResult(
@@ -23,13 +25,13 @@ abstract class BaseViewModel : ViewModel() {
     ) {
     }
 
+    open fun handleResume() {}
+
+    open fun handlePause() {}
+
     @CallSuper
     open fun handleRestoreInstanceState(savedInstanceState: Bundle) {
     }
-
-    open fun handleReady() {}
-
-    open fun handlePause() {}
 
     @CallSuper
     open fun handleSaveInstanceState(outState: Bundle) {

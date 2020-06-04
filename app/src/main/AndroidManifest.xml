@@ -38,5 +38,17 @@
             android:name=".ui.main.news.detail.NewsDetailsActivity"
             android:screenOrientation="unspecified"
             android:theme="@style/AppTheme.NewsDetail" />
+
+        <provider
+            android:name="androidx.work.impl.WorkManagerInitializer"
+            android:authorities="com.bapidas.news.work-manager-init"
+            android:exported="false"
+            tools:node="remove"
+            tools:replace="android:authorities" />
+
+        <service android:name=".service.DemoService" />
+        <service android:name=".service.DemoIntentService" />
+
+        <receiver android:name=".receiver.DemoReceiver" />
     </application>
 </manifest>

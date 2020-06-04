@@ -8,6 +8,7 @@ object Versions {
     const val constraint_layout = "1.1.3"
     const val retrofit = "2.7.1"
     const val ok_http = "4.4.0"
+    const val work = "2.3.2"
     const val rx_java = "2.2.17"
     const val rx_android = "2.1.1"
     const val gson = "2.8.6"
@@ -65,7 +66,10 @@ object Dependencies {
     const val paging_rx_java = "androidx.paging:paging-rxjava2:${Versions.paging}"
     const val paging_common = "androidx.paging:paging-common:${Versions.paging}"
 
-    const val dagger_android = "com.google.dagger:dagger-android:${Versions.dagger}"
+    const val work_runtime = "androidx.work:work-runtime:${Versions.work}"
+    const val work_rx_java = "androidx.work:work-rxjava2:${Versions.work}"
+
+    const val dagger_android = "com.google.dagger:dagger-android-support:${Versions.dagger}"
     const val dagger_compiler = "com.google.dagger:dagger-compiler:${Versions.dagger}"
     const val dagger_processor = "com.google.dagger:dagger-android-processor:${Versions.dagger}"
 

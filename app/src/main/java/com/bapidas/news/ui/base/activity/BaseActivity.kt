@@ -15,7 +15,6 @@ import dagger.android.AndroidInjection
 import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
 import dagger.android.HasAndroidInjector
-import io.reactivex.disposables.CompositeDisposable
 import javax.inject.Inject
 
 abstract class BaseActivity<D : ViewDataBinding, V : BaseViewModel> : AppCompatActivity(),
@@ -32,12 +31,14 @@ abstract class BaseActivity<D : ViewDataBinding, V : BaseViewModel> : AppCompatA
 
     protected abstract val viewModelClass: Class<V>
 
-    lateinit var viewModel: V
+    internal lateinit var viewModel: V
         private set
 
     private lateinit var binding: D
 
-    internal val compositeDisposable: CompositeDisposable by lazy { CompositeDisposable() }
+    override fun androidInjector(): AndroidInjector<Any> {
+        return supportFragmentInjector
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         AndroidInjection.inject(this)
@@ -82,14 +83,9 @@ abstract class BaseActivity<D : ViewDataBinding, V : BaseViewModel> : AppCompatA
         viewModel.handlePermissionResult(requestCode, permissions, grantResults)
     }
 
-    override fun onRestoreInstanceState(savedInstanceState: Bundle) {
-        super.onRestoreInstanceState(savedInstanceState)
-        viewModel.handleRestoreInstanceState(savedInstanceState)
-    }
-
     override fun onResume() {
         super.onResume()
-        viewModel.handleReady()
+        viewModel.handleResume()
     }
 
     override fun onPause() {
@@ -97,17 +93,13 @@ abstract class BaseActivity<D : ViewDataBinding, V : BaseViewModel> : AppCompatA
         viewModel.handlePause()
     }
 
-    override fun onDestroy() {
-        compositeDisposable.clear()
-        super.onDestroy()
+    override fun onRestoreInstanceState(savedInstanceState: Bundle) {
+        super.onRestoreInstanceState(savedInstanceState)
+        viewModel.handleRestoreInstanceState(savedInstanceState)
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
         viewModel.handleSaveInstanceState(outState)
-    }
-
-    override fun androidInjector(): AndroidInjector<Any> {
-        return supportFragmentInjector
     }
 }
