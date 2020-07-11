@@ -13,13 +13,13 @@ interface NewsRepository {
 
     fun getNewsArticleTotalCount(): Int
 
-    fun deleteNewsArticle(articles: Article)
+    fun deleteNewsArticle(article: Article)
 
     fun deleteNewsArticles(articles: List<Article>)
 
     fun saveNewsArticles(articles: List<News>)
 
-    fun saveNewsArticle(articles: News)
+    fun saveNewsArticle(article: News)
 
     fun fetchNewsFromRemote(page: Int): Single<NewsListResponse>
 }

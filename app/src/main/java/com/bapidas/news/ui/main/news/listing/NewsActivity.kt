@@ -6,6 +6,7 @@ import android.view.View
 import androidx.lifecycle.Observer
 import com.bapidas.news.R
 import com.bapidas.news.databinding.ActivityNewsBinding
+import com.bapidas.news.extensions.disposeWith
 import com.bapidas.news.extensions.dp
 import com.bapidas.news.ui.base.activity.BaseActivity
 import com.bapidas.news.ui.base.adapter.callback.ItemViewListener
@@ -25,11 +26,13 @@ class NewsActivity : BaseActivity<ActivityNewsBinding, NewsViewModel>(), ItemVie
 
     override fun onViewModelCreated() {
         super.onViewModelCreated()
-        viewModel.newsArticles.observe(this, Observer {
+        viewModel.newsArticles.subscribe({
             Timber.e("newsArticles %s", it.loadedCount)
             if (it.isNotEmpty()) viewModel.isLoading.value = false
             newsAdapter.submitList(it)
-        })
+        }, {
+            it.printStackTrace()
+        }).disposeWith(compositeDisposable)
     }
 
     override fun onViewCreated() {

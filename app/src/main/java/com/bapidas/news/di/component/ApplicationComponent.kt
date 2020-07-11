@@ -1,7 +1,7 @@
 package com.bapidas.news.di.component
 
 import com.bapidas.news.NewsApplication
-import com.bapidas.news.di.module.inject.ApplicationModule
+import com.bapidas.news.di.module.ApplicationModule
 import dagger.BindsInstance
 import dagger.Component
 import dagger.android.AndroidInjector

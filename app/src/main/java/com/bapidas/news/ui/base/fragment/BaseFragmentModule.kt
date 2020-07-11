@@ -2,8 +2,8 @@ package com.handzap.handzap.ui.base.fragment
 
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import com.bapidas.news.di.qualifier.FragmentContext
-import com.bapidas.news.di.scope.FragmentScope
+import com.bapidas.news.ui.di.qualifier.FragmentContext
+import com.bapidas.news.ui.di.scope.FragmentScope
 import com.bapidas.news.ui.base.viewmodel.factory.FragmentViewModelFactory
 import dagger.Binds
 import dagger.Module

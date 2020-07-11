@@ -3,8 +3,8 @@ package com.bapidas.news.ui.base.activity
 import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
-import com.bapidas.news.di.qualifier.ActivityContext
-import com.bapidas.news.di.scope.ActivityScope
+import com.bapidas.news.ui.di.qualifier.ActivityContext
+import com.bapidas.news.ui.di.scope.ActivityScope
 import com.bapidas.news.ui.base.viewmodel.factory.ActivityViewModelFactory
 import dagger.Binds
 import dagger.Module

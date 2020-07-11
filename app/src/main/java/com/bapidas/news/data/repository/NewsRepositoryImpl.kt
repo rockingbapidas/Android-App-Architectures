@@ -4,6 +4,8 @@ import androidx.paging.DataSource
 import com.bapidas.news.BuildConfig
 import com.bapidas.news.data.db.dao.NewsArticlesDao
 import com.bapidas.news.data.db.model.ArticleEntity
+import com.bapidas.news.data.mapper.toArticle
+import com.bapidas.news.data.mapper.toArticleEntity
 import com.bapidas.news.data.network.api.NewsApi
 import com.bapidas.news.data.network.model.News
 import com.bapidas.news.data.network.response.NewsListResponse
@@ -17,84 +19,31 @@ class NewsRepositoryImpl constructor(
 ) : NewsRepository {
 
     override fun getNewsArticles(): DataSource.Factory<Int, Article> {
-        Timber.v("getNewsArticles ")
-        return mNewsArticlesDao.getNewsArticles()
-            .map {
-                Article(
-                    it.publishedAt,
-                    it.title,
-                    it.description,
-                    it.urlToImage,
-                    it.sourceName
-                )
-            }
+        return mNewsArticlesDao.getNewsArticles().map{it.toArticle()}
     }
 
     override fun getNewsArticle(id: String): Article {
-        val articleEntity = mNewsArticlesDao.getNewsArticle(id)
-        return articleEntity.run {
-            Article(publishedAt, title, description, urlToImage, sourceName)
-        }
+        return mNewsArticlesDao.getNewsArticle(id).toArticle()
     }
 
     override fun getNewsArticleTotalCount(): Int {
         return mNewsArticlesDao.getNewsArticlesCount()
     }
 
-    override fun deleteNewsArticle(articles: Article) {
-        articles.run {
-            mNewsArticlesDao.delete(
-                ArticleEntity(
-                    publishedAt,
-                    title,
-                    description,
-                    urlToImage,
-                    sourceName
-                )
-            )
-        }
+    override fun deleteNewsArticle(article: Article) {
+        mNewsArticlesDao.delete(article.toArticleEntity())
     }
 
     override fun deleteNewsArticles(articles: List<Article>) {
-        articles.run {
-            mNewsArticlesDao.delete(map {
-                ArticleEntity(
-                    it.publishedAt,
-                    it.title,
-                    it.description,
-                    it.urlToImage,
-                    it.sourceName
-                )
-            })
-        }
+        mNewsArticlesDao.delete(articles.map { it.toArticleEntity() })
     }
 
     override fun saveNewsArticles(articles: List<News>) {
-        val article = articles
-            .map {
-                ArticleEntity(
-                    it.publishedAt,
-                    it.title,
-                    it.description,
-                    it.urlToImage,
-                    it.source?.name
-                )
-            }
-        mNewsArticlesDao.insert(article)
+        mNewsArticlesDao.insert(articles.map { it.toArticleEntity() })
     }
 
-    override fun saveNewsArticle(articles: News) {
-        articles.run {
-            mNewsArticlesDao.insert(
-                ArticleEntity(
-                    publishedAt,
-                    title,
-                    description,
-                    urlToImage,
-                    source?.name
-                )
-            )
-        }
+    override fun saveNewsArticle(article: News) {
+        mNewsArticlesDao.insert(article.toArticleEntity())
     }
 
     override fun fetchNewsFromRemote(page: Int): Single<NewsListResponse> {

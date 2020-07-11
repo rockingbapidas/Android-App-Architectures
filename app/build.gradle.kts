@@ -9,11 +9,11 @@ android {
     compileSdkVersion(Apps.compileSdk)
     flavorDimensions("default")
     buildFeatures.dataBinding = true
+    buildFeatures.viewBinding = true
     kotlinOptions.jvmTarget = "1.8"
 
     buildTypes {
         getByName(Debug.name) {
-            proguardFiles(getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro")
             isShrinkResources = Debug.shrinkResources
             isMinifyEnabled = Debug.minifyEnabled
             isDebuggable = Debug.debuggable

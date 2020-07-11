@@ -9,15 +9,16 @@ import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.ViewModelProvider
 import com.bapidas.news.BR
-import com.bapidas.news.di.qualifier.ActivityContext
-import com.bapidas.news.ui.base.viewmodel.BaseViewModel
+import com.bapidas.news.ui.di.qualifier.ActivityContext
+import com.bapidas.news.ui.base.viewmodel.BaseActivityViewModel
 import dagger.android.AndroidInjection
 import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
 import dagger.android.HasAndroidInjector
+import io.reactivex.disposables.CompositeDisposable
 import javax.inject.Inject
 
-abstract class BaseActivity<D : ViewDataBinding, V : BaseViewModel> : AppCompatActivity(),
+abstract class BaseActivity<D : ViewDataBinding, V : BaseActivityViewModel> : AppCompatActivity(),
     HasAndroidInjector {
     @Inject
     protected lateinit var supportFragmentInjector: DispatchingAndroidInjector<Any>
@@ -35,6 +36,8 @@ abstract class BaseActivity<D : ViewDataBinding, V : BaseViewModel> : AppCompatA
         private set
 
     private lateinit var binding: D
+
+    internal val compositeDisposable: CompositeDisposable by lazy { CompositeDisposable() }
 
     override fun androidInjector(): AndroidInjector<Any> {
         return supportFragmentInjector
@@ -91,6 +94,11 @@ abstract class BaseActivity<D : ViewDataBinding, V : BaseViewModel> : AppCompatA
     override fun onPause() {
         super.onPause()
         viewModel.handlePause()
+    }
+
+    override fun onDestroy() {
+        compositeDisposable.clear()
+        super.onDestroy()
     }
 
     override fun onRestoreInstanceState(savedInstanceState: Bundle) {

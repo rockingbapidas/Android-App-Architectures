@@ -46,13 +46,11 @@ object Dependencies {
     const val kotlin_stdlib = "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${Versions.kotlin}"
     const val kotlin_reflect = "org.jetbrains.kotlin:kotlin-reflect:${Versions.kotlin}"
 
-    const val material_component =
-        "com.google.android.material:material:${Versions.material_component}"
+    const val material_component = "com.google.android.material:material:${Versions.material_component}"
     const val core_ktx = "androidx.core:core-ktx:${Versions.core_ktx}"
     const val app_compat = "androidx.appcompat:appcompat:${Versions.appcompat}"
     const val multi_dex = "androidx.multidex:multidex:${Versions.multi_dex}"
-    const val constraint_layout =
-        "androidx.constraintlayout:constraintlayout:${Versions.constraint_layout}"
+    const val constraint_layout = "androidx.constraintlayout:constraintlayout:${Versions.constraint_layout}"
 
     const val extensions = "androidx.lifecycle:lifecycle-extensions:${Versions.lifecycle}"
     const val view_model = "androidx.lifecycle:lifecycle-viewmodel:${Versions.lifecycle}"
@@ -82,8 +80,7 @@ object Dependencies {
     const val retrofit_gson = "com.squareup.retrofit2:converter-gson:${Versions.retrofit}"
 
     const val ok_http = "com.squareup.okhttp3:okhttp:${Versions.ok_http}"
-    const val ok_http_url_connection =
-        "com.squareup.okhttp3:okhttp-urlconnection:${Versions.ok_http}"
+    const val ok_http_url_connection = "com.squareup.okhttp3:okhttp-urlconnection:${Versions.ok_http}"
     const val logging_interceptor = "com.squareup.okhttp3:logging-interceptor:${Versions.ok_http}"
 
     const val rx_java = "io.reactivex.rxjava2:rxjava:${Versions.rx_java}"

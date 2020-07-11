@@ -1,5 +1,6 @@
 package com.bapidas.news.data.db.model
 
+import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
@@ -7,10 +8,16 @@ import com.google.gson.annotations.SerializedName
 @Entity(tableName = "tbl_article")
 class ArticleEntity(
     @PrimaryKey
-    @SerializedName("publishedAt")
+    @ColumnInfo(name = "publishedAt")
     val publishedAt: String,
+    @ColumnInfo(name = "title")
     val title: String? = null,
+    @ColumnInfo(name = "description")
     val description: String? = null,
+    @ColumnInfo(name = "urlToImage")
     val urlToImage: String? = null,
+    @ColumnInfo(name = "url")
+    val url: String? = null,
+    @ColumnInfo(name = "sourceName")
     val sourceName: String? = null
 )

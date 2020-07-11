@@ -12,10 +12,6 @@ abstract class BaseViewModel : ViewModel() {
 
     open fun handleCreate() {}
 
-    open fun handleIntent(intent: Intent) {}
-
-    open fun handleArguments(bundle: Bundle) {}
-
     open fun handleResult(requestCode: Int, resultCode: Int, data: Intent?) {}
 
     open fun handlePermissionResult(

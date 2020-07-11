@@ -12,7 +12,7 @@ class NewsDataSourceFactory(
     private val compositeDisposable: CompositeDisposable
 ) : DataSource.Factory<String, Article>() {
 
-    val newsDataSourceLiveData = MutableLiveData<NewsDataSource>()
+    private val newsDataSourceLiveData = MutableLiveData<NewsDataSource>()
 
     override fun create(): DataSource<String, Article> {
         Timber.v("create")

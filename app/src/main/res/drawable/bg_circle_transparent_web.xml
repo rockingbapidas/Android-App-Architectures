@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <shape android:shape="oval">
+            <solid android:color="#66000000" />
+            <padding
+                android:bottom="@dimen/dimen_4dp"
+                android:left="@dimen/dimen_4dp"
+                android:right="@dimen/dimen_4dp"
+                android:top="@dimen/dimen_4dp" />
+        </shape>
+    </item>
+    <item android:drawable="@drawable/ic_baseline_language_24" />
+</layer-list>

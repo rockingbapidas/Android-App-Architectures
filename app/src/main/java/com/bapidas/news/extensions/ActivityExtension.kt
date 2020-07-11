@@ -1,13 +1,15 @@
 package com.bapidas.news.extensions
 
-import android.app.Activity
 import android.os.Build
+import android.os.Bundle
 import android.view.View
 import android.view.WindowManager
+import androidx.annotation.IdRes
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
 import com.bapidas.news.R
 
-fun Activity.makeStatusBarTransparent() {
+fun AppCompatActivity.makeStatusBarTransparent() {
     window.apply {
         clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
         addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
@@ -31,4 +33,25 @@ fun AppCompatActivity.getStatusBarHeight(): Int {
         result = this.resources.getDimensionPixelSize(resourceId)
     }
     return result
+}
+
+fun AppCompatActivity.replaceFragment(
+    @IdRes containerViewId: Int,
+    fragment: Fragment,
+    addToBackStack: Boolean = false,
+    allowStateLoss: Boolean = false,
+    tag: String = "",
+    arguments: Bundle? = null
+) {
+    arguments?.let { fragment.arguments = it }
+    supportFragmentManager.beginTransaction().apply {
+        replace(containerViewId, fragment, tag)
+        if (addToBackStack)
+            addToBackStack(null)
+        if (!supportFragmentManager.isStateSaved) {
+            commit()
+        } else if (allowStateLoss) {
+            commitAllowingStateLoss()
+        }
+    }
 }

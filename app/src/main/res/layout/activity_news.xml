@@ -55,7 +55,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:visibility="@{viewModel.isLoading &amp;&amp; viewModel.newsArticles.isEmpty()}"
+                app:visibility="@{viewModel.isLoading}"
                 tools:visibility="gone">
 
                 <include layout="@layout/item_news_shimmer" />
@@ -78,7 +78,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:visibility="@{!viewModel.isLoading &amp;&amp; !viewModel.newsArticles.isEmpty()}"
+                app:visibility="@{!viewModel.isLoading}"
                 tools:itemCount="10"
                 tools:listitem="@layout/item_news"
                 tools:visibility="visible" />

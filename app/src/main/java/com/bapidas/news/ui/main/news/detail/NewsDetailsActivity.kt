@@ -4,13 +4,16 @@ import android.app.Activity
 import android.content.Intent
 import android.view.View
 import androidx.core.app.ActivityOptionsCompat
+import androidx.core.os.bundleOf
 import androidx.core.util.Pair
 import com.bapidas.news.R
 import com.bapidas.news.databinding.ActivityNewsDetailBinding
 import com.bapidas.news.extensions.getStatusBarHeight
 import com.bapidas.news.extensions.makeStatusBarTransparent
+import com.bapidas.news.extensions.replaceFragment
 import com.bapidas.news.extensions.setMarginTop
 import com.bapidas.news.ui.base.activity.BaseActivity
+import com.bapidas.news.ui.main.news.detail.browser.NewsBrowserFragment
 import com.bapidas.news.ui.model.Article
 import kotlinx.android.synthetic.main.activity_news_detail.*
 
@@ -28,15 +31,30 @@ class NewsDetailsActivity : BaseActivity<ActivityNewsDetailBinding, NewsDetailVi
         super.onViewCreated()
         makeStatusBarTransparent()
         appbar.setMarginTop(getStatusBarHeight())
+        container.setMarginTop(getStatusBarHeight())
         img_back.setOnClickListener {
             onBackPressed()
+        }
+        img_web.setOnClickListener {
+            replaceFragment(
+                container.id,
+                NewsBrowserFragment.newInstance(),
+                arguments = bundleOf(
+                    NewsBrowserFragment.NEWS_EXTRA_DATA to viewModel.article.value
+                ),
+                addToBackStack = true
+            )
         }
         supportStartPostponedEnterTransition()
     }
 
     override fun onBackPressed() {
-        super.onBackPressed()
-        supportFinishAfterTransition()
+        if (supportFragmentManager.backStackEntryCount > 0) {
+            supportFragmentManager.popBackStackImmediate()
+        } else {
+            super.onBackPressed()
+            supportFinishAfterTransition()
+        }
     }
 
     companion object {

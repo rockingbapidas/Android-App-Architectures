@@ -13,15 +13,16 @@ import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.bapidas.news.BR
-import com.bapidas.news.di.qualifier.FragmentContext
-import com.bapidas.news.ui.base.viewmodel.BaseViewModel
+import com.bapidas.news.ui.di.qualifier.FragmentContext
+import com.bapidas.news.ui.base.viewmodel.BaseFragmentViewModel
 import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
 import dagger.android.HasAndroidInjector
 import dagger.android.support.AndroidSupportInjection
+import io.reactivex.disposables.CompositeDisposable
 import javax.inject.Inject
 
-abstract class BaseFragment<D : ViewDataBinding, V : BaseViewModel> : Fragment(),
+abstract class BaseFragment<D : ViewDataBinding, V : BaseFragmentViewModel> : Fragment(),
     HasAndroidInjector {
     @Inject
     protected lateinit var childFragmentInjector: DispatchingAndroidInjector<Any>
@@ -40,6 +41,8 @@ abstract class BaseFragment<D : ViewDataBinding, V : BaseViewModel> : Fragment()
 
     private lateinit var _binding: D
 
+    internal val compositeDisposable: CompositeDisposable by lazy { CompositeDisposable() }
+
     override fun androidInjector(): AndroidInjector<Any> {
         return childFragmentInjector
     }
@@ -52,12 +55,9 @@ abstract class BaseFragment<D : ViewDataBinding, V : BaseViewModel> : Fragment()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         //create view model
-        activity?.let { it ->
-            viewModel = viewModelProvider.get(viewModelClass)
-            viewModel.handleCreate()
-            viewModel.handleIntent(it.intent)
-            arguments?.let { viewModel.handleArguments(it) }
-        }
+        viewModel = viewModelProvider.get(viewModelClass)
+        viewModel.handleCreate()
+        arguments?.let { viewModel.handleArguments(it) }
     }
 
     override fun onCreateView(
@@ -95,6 +95,11 @@ abstract class BaseFragment<D : ViewDataBinding, V : BaseViewModel> : Fragment()
     override fun onPause() {
         super.onPause()
         viewModel.handlePause()
+    }
+
+    override fun onDestroyView() {
+        compositeDisposable.clear()
+        super.onDestroyView()
     }
 
     override fun onViewStateRestored(savedInstanceState: Bundle?) {

@@ -1,6 +1,7 @@
 package com.bapidas.news.ui.main.news.listing.paging
 
 import androidx.paging.ItemKeyedDataSource
+import com.bapidas.news.data.mapper.toArticle
 import com.bapidas.news.data.network.response.NewsListResponse
 import com.bapidas.news.data.repository.NewsRepository
 import com.bapidas.news.data.repository.NewsRepositoryImpl
@@ -71,15 +72,6 @@ class NewsDataSource(
         Timber.v("mapResults ")
         loadedNewsArticle += NewsRepositoryImpl.PAGE_SIZE
         totalNewsArticle = newsListResponse.totalResults
-        return newsListResponse.articles
-            .map {
-                Article(
-                    it.publishedAt,
-                    it.title,
-                    it.description,
-                    it.urlToImage,
-                    it.source?.name
-                )
-            }
+        return newsListResponse.articles.map { it.toArticle() }
     }
 }

@@ -7,6 +7,7 @@ class Article(
     val title: String? = null,
     val description: String? = null,
     val urlToImage: String? = null,
+    val url: String? = null,
     val sourceName: String? = null
 ) : Serializable {
     val dateString
