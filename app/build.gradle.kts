@@ -37,21 +37,6 @@ android {
         versionCode = Apps.versionCode
         testInstrumentationRunner = TestDependencies.instrumentationRunner
         setProperty("archivesBaseName", "newsapp-v${versionName}(${versionCode})")
-        buildConfigField(
-            "int", ConfigField.DATABASE_VERSION, Apps.databaseVersion
-        )
-        buildConfigField(
-            "String", ConfigField.DOMAIN, "\"${Apps.domain}\""
-        )
-        buildConfigField(
-            "String", ConfigField.API_DOMAIN, "\"${Apps.apiDomain}\""
-        )
-        buildConfigField(
-            "String", ConfigField.API_KEY, "\"${Apps.apiKey}\""
-        )
-        buildConfigField(
-            "Boolean", ConfigField.LOCAL_CACHE, Apps.localCache
-        )
     }
 
     testOptions {
@@ -72,11 +57,10 @@ android {
     lintOptions {
         isCheckReleaseBuilds = false
     }
+}
 
-    sourceSets {
-        getByName("test").resources.setSrcDirs(map { "sampledata" })
-        getByName("androidTest").resources.setSrcDirs(map { "sampledata" })
-    }
+androidExtensions {
+    isExperimental = true
 }
 
 kapt {
@@ -86,29 +70,22 @@ kapt {
 }
 
 dependencies {
-    implementation(
-        fileTree(
-            mapOf(
-                "dir" to "src/main/libs",
-                "include" to listOf("*.jar", "*.aar")
-            )
-        )
-    )
+    implementation(fileTree(mapOf("dir" to "src/main/libs", "include" to listOf("*.jar", "*.aar"))))
 
-    kotlin()
+    implementation(project(":appcore"))
+    implementation(project(":framework"))
+
     androidx()
-    lifeCycle()
-    room()
     paging()
     workManager()
-    retrofit()
-    okHttp()
-    rxJava()
+    lifeCycle()
+
+    kotlin()
     dagger()
-    glide()
-    gson()
     timber()
-    shimmer()
     jUnit()
     mockito()
+    androidxTest()
+
+    featureHeadlines()
 }

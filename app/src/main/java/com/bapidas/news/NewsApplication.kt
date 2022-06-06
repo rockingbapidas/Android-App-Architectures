@@ -2,8 +2,8 @@ package com.bapidas.news
 
 import android.util.Log
 import androidx.work.WorkManager
+import com.bapidas.news.appcore.worker.WorkerInjectorFactory
 import com.bapidas.news.di.component.DaggerApplicationComponent
-import com.bapidas.news.worker.base.WorkerInjectorFactory
 import dagger.android.AndroidInjector
 import dagger.android.DaggerApplication
 import timber.log.Timber

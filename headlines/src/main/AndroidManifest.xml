@@ -1,0 +1,19 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.bapidas.news.headlines">
+
+    <application>
+        <activity
+            android:name="com.bapidas.news.headlines.listing.NewsActivity"
+            android:screenOrientation="unspecified"
+            android:theme="@style/AppTheme.NewsList" />
+        <activity
+            android:name=".detail.NewsDetailsActivity"
+            android:screenOrientation="unspecified"
+            android:theme="@style/AppTheme.NewsDetail" />
+
+        <service android:name="com.bapidas.news.headlines.service.HeadlinesDemoService" />
+        <service android:name="com.bapidas.news.headlines.service.HeadlinesDemoIntentService" />
+
+        <receiver android:name="com.bapidas.news.headlines.receiver.HeadlinesDemoReceiver" />
+    </application>
+</manifest>

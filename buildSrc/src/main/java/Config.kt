@@ -5,10 +5,11 @@ object Apps {
     const val targetSdk = 29
     const val renderScriptTarget = 18
     const val databaseVersion = "1"
+    const val databaseName = "news-db"
     const val versionName = "1.0.0"
     const val versionCode = 1
     const val domain = "newsapi.org"
-    const val apiDomain = "http://newsapi.org"
+    const val apiDomain = "http://$domain"
     const val apiKey = "59b23dbaede34a2488fe2d4da93b9ffb"
     const val localCache = "true"
 }
@@ -31,8 +32,9 @@ object Release {
 
 object ConfigField {
     const val DATABASE_VERSION = "DATABASE_VERSION"
+    const val DATABASE_NAME = "DATABASE_NAME"
     const val DOMAIN = "DOMAIN"
     const val API_DOMAIN = "API_DOMAIN"
     const val API_KEY = "API_KEY"
-    const val LOCAL_CACHE = "LOCAL_CACHE"
+    const val HEADLINES_LOCAL_CACHE = "HEADLINES_LOCAL_CACHE"
 }

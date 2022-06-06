@@ -1,24 +1,27 @@
-# Mvvm Architecture sample
-News Android app sample in Kotlin.
+# Multimodule + Mvvm + Clean Architecture
 
-Architecture - MVVM
+Android news reading app sample.
 
-Database - Room Persistance
+Architecture - Multimodule + MVVM + Clean Architecture
 
-Dependency Injection - Android Dagger 2
+Database - Room Persistent
 
-Reactive Programming - RxJava 2, RxAndroid
+Dependency Injection - Android Dagger2
+
+Reactive Programming - Coroutines
 
 Network - Retrofit and OkHttp
 
-Pagination - JetPack Paging
+Architecture Components - Paging, WorkManager, Livedata, Viewmodel
 
 UiBinding - Android DataBinding
 
-Unit Test - Juint and Mockito
+Unit Test - Junit and Mockito
 
-Instrumentation - Esspresso
+Instrumentation Test - Espresso
 
-Image Loading - Glide
+Image loading - Glide
 
-Gradle - Kotling DSL
+Gradle - Kotlin DSL
+
+<img src="https://github.com/rockingbapidas/mvvm-clean-architecture/raw/master/screenshots/Screenshot_1592481436.png" height="500"> <img src="https://github.com/rockingbapidas/mvvm-clean-architecture/raw/master/screenshots/Screenshot_1592481441.png" height="500">

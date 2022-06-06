@@ -1,0 +1,11 @@
+<resources>
+
+    <style name="AppTheme.NewsList" parent="AppTheme">
+        <item name="android:windowBackground">@color/background</item>
+        <item name="toolbarTitleTextAppearance">@style/AppTheme.ToolbarTitleTextStyle</item>
+    </style>
+
+    <style name="AppTheme.NewsDetail" parent="AppTheme">
+
+    </style>
+</resources>

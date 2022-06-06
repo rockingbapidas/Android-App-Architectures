@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <variable
+            name="item"
+            type="com.bapidas.news.headlines.model.Article" />
+
+        <variable
+            name="callback"
+            type="com.bapidas.news.appcore.adapter.callback.ItemViewListener" />
+
+    </data>
+
+    <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/cardNews"
+        android:layout_width="match_parent"
+        android:layout_height="190dp"
+        android:layout_marginStart="@dimen/dimen_16dp"
+        android:layout_marginEnd="@dimen/dimen_16dp"
+        android:onClick="@{(v) -> callback.onItemClick(v, item)}"
+        android:transitionName="card"
+        app:cardCornerRadius="@dimen/dimen_8dp"
+        app:cardElevation="@dimen/dimen_8dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/imgBg"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:scaleType="centerCrop"
+                android:src="@{item.urlToImage}"
+                android:transitionName="image"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:src="@drawable/cbsn_fusion" />
+
+            <View
+                android:id="@+id/view"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:background="@drawable/bg_gradient"
+                android:transitionName="view"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="@+id/imgBg"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent">
+
+                <TextView
+                    android:id="@+id/tv_title"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="@dimen/dimen_12dp"
+                    android:layout_marginEnd="@dimen/dimen_12dp"
+                    android:ellipsize="end"
+                    android:fontFamily="@font/roboto_slab_regular"
+                    android:gravity="start"
+                    android:maxLines="3"
+                    android:text="@{item.title}"
+                    android:textColor="@color/newsTitle"
+                    android:textSize="@dimen/dimen_20sp"
+                    android:transitionName="title"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="Coronavirus: A Retrospective Coronavirus: A Retrospective Coronavirus: A Retrospective Coronavirus: A Retrospective " />
+
+                <TextView
+                    android:id="@+id/tv_source"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="@dimen/dimen_12dp"
+                    android:layout_marginTop="@dimen/dimen_24dp"
+                    android:layout_marginBottom="@dimen/dimen_12dp"
+                    android:ellipsize="end"
+                    android:fontFamily="@font/roboto_slab_bold"
+                    android:gravity="start"
+                    android:maxLines="2"
+                    android:text="@{item.sourceName}"
+                    android:textColor="@color/newsSubTitle"
+                    android:textSize="@dimen/dimen_12sp"
+                    android:transitionName="source"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_title"
+                    tools:text="CNN" />
+
+                <TextView
+                    android:id="@+id/tv_date"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="@dimen/dimen_16dp"
+                    android:layout_marginTop="@dimen/dimen_24dp"
+                    android:layout_marginBottom="@dimen/dimen_12dp"
+                    android:ellipsize="end"
+                    android:fontFamily="@font/roboto_slab_regular"
+                    android:gravity="start"
+                    android:maxLines="2"
+                    android:text="@{item.dateString}"
+                    android:textColor="@color/newsSubTitle"
+                    android:textSize="@dimen/dimen_12sp"
+                    android:transitionName="date"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/tv_source"
+                    tools:text="2019-07-08" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+</layout>

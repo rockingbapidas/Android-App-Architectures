@@ -1,6 +1,6 @@
 package com.bapidas.news.receiver
 
-import com.bapidas.news.receiver.base.BaseBroadcastReceiver
+import com.bapidas.news.appcore.receiver.BaseBroadcastReceiver
 
-class DemoReceiver : BaseBroadcastReceiver() {
-}
+
+class DemoReceiver : BaseBroadcastReceiver()
