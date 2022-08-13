@@ -1668,3 +1668,8 @@
 /.idea/libraries/Gradle__io_reactivex_rxjava2_rxandroid_2_1_1_aar.xml
 /.idea/modules.xml
 /.idea/modules/NewsApp.iml
+/.gradle/
+/build/
+/.idea/
+/buildSrc/.gradle/
+/buildSrc/build/
