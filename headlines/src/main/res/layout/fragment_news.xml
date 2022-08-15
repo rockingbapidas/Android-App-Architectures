@@ -6,7 +6,7 @@
 
         <variable
             name="viewModel"
-            type="com.bapidas.news.headlines.browser.NewsBrowserViewModel" />
+            type="com.bapidas.news.headlines.detail.browser.NewsBrowserViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

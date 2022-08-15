@@ -6,29 +6,17 @@ plugins {
 }
 
 android {
-    compileSdkVersion(Apps.compileSdk)
+    compileSdkVersion(AppConfigs.compileSdk)
     buildFeatures.dataBinding = true
     buildFeatures.viewBinding = true
     kotlinOptions.jvmTarget = "1.8"
 
     defaultConfig {
-        minSdkVersion(Apps.minSdk)
-        targetSdkVersion(Apps.targetSdk)
-        versionName = Apps.versionName
-        versionCode = Apps.versionCode
+        minSdkVersion(AppConfigs.minSdk)
+        targetSdkVersion(AppConfigs.targetSdk)
         multiDexEnabled = true
         testInstrumentationRunner = TestDependencies.instrumentationRunner
         consumerProguardFile("consumer-rules.pro")
-        buildConfigField(
-            "Boolean", ConfigField.HEADLINES_LOCAL_CACHE, Apps.localCache
-        )
-    }
-
-    buildTypes {
-        getByName(Release.name) {
-            isMinifyEnabled = false
-            proguardFiles(getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro")
-        }
     }
 
     compileOptions {

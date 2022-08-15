@@ -1,44 +1,21 @@
 plugins {
     id(Plugin.android_library)
+    id(Plugin.proto_buf) version Versions.protobuf_plugin
     kotlin(Plugin.kotlin_android)
     kotlin(Plugin.kotlin_android_extension)
     kotlin(Plugin.kotlin_android_kapt)
 }
 
 android {
-    compileSdkVersion(Apps.compileSdk)
+    compileSdkVersion(AppConfigs.compileSdk)
     kotlinOptions.jvmTarget = "1.8"
 
     defaultConfig {
-        minSdkVersion(Apps.minSdk)
-        targetSdkVersion(Apps.targetSdk)
-        versionName = Apps.versionName
-        versionCode = Apps.versionCode
+        minSdkVersion(AppConfigs.minSdk)
+        targetSdkVersion(AppConfigs.targetSdk)
         multiDexEnabled = true
         testInstrumentationRunner = TestDependencies.instrumentationRunner
         consumerProguardFile("consumer-rules.pro")
-        buildConfigField(
-            "int", ConfigField.DATABASE_VERSION, Apps.databaseVersion
-        )
-        buildConfigField(
-            "String", ConfigField.DATABASE_NAME, "\"${Apps.databaseName}\""
-        )
-        buildConfigField(
-            "String", ConfigField.DOMAIN, "\"${Apps.domain}\""
-        )
-        buildConfigField(
-            "String", ConfigField.API_DOMAIN, "\"${Apps.apiDomain}\""
-        )
-        buildConfigField(
-            "String", ConfigField.API_KEY, "\"${Apps.apiKey}\""
-        )
-    }
-
-    buildTypes {
-        getByName(Release.name) {
-            isMinifyEnabled = false
-            proguardFiles(getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro")
-        }
     }
 
     compileOptions {
@@ -58,6 +35,7 @@ dependencies {
     retrofit()
     okHttp()
     room()
+    dataStore()
     glide()
 
     kotlin()

@@ -2,7 +2,7 @@ package com.bapidas.news.headlines.detail
 
 import android.content.Intent
 import androidx.lifecycle.MutableLiveData
-import com.bapidas.news.appcore.di.scope.ActivityScope
+import com.bapidas.news.appcore.di.ActivityScope
 import com.bapidas.news.appcore.viewmodel.BaseActivityViewModel
 import com.bapidas.news.headlines.model.Article
 import javax.inject.Inject

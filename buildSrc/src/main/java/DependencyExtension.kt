@@ -57,9 +57,8 @@ fun DependencyHandler.shimmer() {
 }
 
 fun DependencyHandler.dagger() {
-    api(Dependencies.dagger_android)
+    api(Dependencies.dagger)
     kapt(Dependencies.dagger_compiler)
-    kapt(Dependencies.dagger_processor)
 }
 
 fun DependencyHandler.retrofit() {
@@ -79,6 +78,12 @@ fun DependencyHandler.room() {
     api(Dependencies.room_ktx)
 }
 
+fun DependencyHandler.dataStore() {
+    implementation(Dependencies.datastore)
+    implementation(Dependencies.datastore_preferences)
+    implementation(Dependencies.protobuf_javalite)
+}
+
 fun DependencyHandler.paging() {
     api(Dependencies.paging_runtime)
 }
@@ -87,10 +92,6 @@ fun DependencyHandler.glide() {
     api(Dependencies.glide)
     kapt(Dependencies.glide_compiler)
     api(Dependencies.glide_integration)
-}
-
-fun DependencyHandler.gson() {
-    api(Dependencies.gson)
 }
 
 fun DependencyHandler.timber() {

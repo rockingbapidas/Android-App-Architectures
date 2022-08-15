@@ -1,12 +1,14 @@
 package com.bapidas.news.framework.db.repository
 
 import com.bapidas.news.data.model.NewsListEntity
-import com.bapidas.news.data.repository.NewsLocalRepository
-import com.bapidas.news.framework.db.dao.RoomNewsDao
+import com.bapidas.news.data.repository.INewsLocalRepository
+import com.bapidas.news.framework.db.dao.IRoomNewsDao
 import com.bapidas.news.framework.db.mapper.fromNewsLocal
 import com.bapidas.news.framework.db.mapper.toNewsLocal
+import javax.inject.Inject
 
-class RoomNewsRepository(private val roomNewsDao: RoomNewsDao) : NewsLocalRepository {
+class RoomNewsRepository @Inject constructor(private val roomNewsDao: IRoomNewsDao) :
+    INewsLocalRepository {
 
     override suspend fun getNews(requestedLoadSize: Int): NewsListEntity {
         return roomNewsDao.news(requestedLoadSize).fromNewsLocal()

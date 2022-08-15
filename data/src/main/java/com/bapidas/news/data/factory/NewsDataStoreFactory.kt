@@ -1,15 +1,16 @@
 package com.bapidas.news.data.factory
 
-import com.bapidas.news.data.store.NewsDataStore
+import com.bapidas.news.data.store.INewsDataStore
 import com.bapidas.news.data.store.NewsLocalDataStore
 import com.bapidas.news.data.store.NewsRemoteDataStore
+import javax.inject.Inject
 
-class NewsDataStoreFactory constructor(
+class NewsDataStoreFactory @Inject constructor(
     private val mNewsLocalDataStore: NewsLocalDataStore,
     private val mNewsRemoteDataStore: NewsRemoteDataStore
 ) {
 
-    fun retrieveDataStore(local: Boolean): NewsDataStore {
+    fun retrieveDataStore(local: Boolean): INewsDataStore {
         return if (local)
             retrieveLocalDataStore()
         else
@@ -19,14 +20,14 @@ class NewsDataStoreFactory constructor(
     /**
      * Return an instance of the Cache Data Store
      */
-    fun retrieveLocalDataStore(): NewsDataStore {
+    fun retrieveLocalDataStore(): INewsDataStore {
         return mNewsLocalDataStore
     }
 
     /**
      * Return an instance of the Remote Data Store
      */
-    fun retrieveRemoteDataStore(): NewsDataStore {
+    fun retrieveRemoteDataStore(): INewsDataStore {
         return mNewsRemoteDataStore
     }
 }

@@ -1,10 +1,11 @@
 package com.bapidas.news.data.store
 
 import com.bapidas.news.data.model.NewsListEntity
-import com.bapidas.news.data.repository.NewsRemoteRepository
+import com.bapidas.news.data.repository.INewsRemoteRepository
+import javax.inject.Inject
 
-class NewsRemoteDataStore constructor(private val mNewsRemoteRepository: NewsRemoteRepository) :
-    NewsDataStore {
+class NewsRemoteDataStore @Inject constructor(private val mNewsRemoteRepository: INewsRemoteRepository) :
+    INewsDataStore {
     override suspend fun getNews(requestedLoadSize: Int): NewsListEntity {
         return mNewsRemoteRepository.getNews(requestedLoadSize = requestedLoadSize)
     }

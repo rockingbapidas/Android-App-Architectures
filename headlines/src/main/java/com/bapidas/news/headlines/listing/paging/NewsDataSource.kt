@@ -1,8 +1,7 @@
 package com.bapidas.news.headlines.listing.paging
 
 import androidx.paging.ItemKeyedDataSource
-import com.bapidas.news.framework.interactions.NewsInteractions
-import com.bapidas.news.headlines.BuildConfig
+import com.bapidas.news.domain.NewsDataInteraction
 import com.bapidas.news.headlines.model.Article
 import com.bapidas.news.headlines.model.mapToArticle
 import kotlinx.coroutines.CoroutineScope
@@ -12,7 +11,7 @@ import kotlinx.coroutines.withContext
 import timber.log.Timber
 
 class NewsDataSource(
-    private val mNewsInteractions: NewsInteractions,
+    private val mNewsInteractions: NewsDataInteraction,
     private val mCoroutineScope: CoroutineScope
 ) : ItemKeyedDataSource<String, Article>() {
 
@@ -25,7 +24,7 @@ class NewsDataSource(
             try {
                 val result = withContext(Dispatchers.IO) {
                     mNewsInteractions.getNews(
-                        local = BuildConfig.HEADLINES_LOCAL_CACHE,
+                        local = true,
                         requestedLoadSize = REQUEST_LOAD_SIZE
                     )
                 }
@@ -46,7 +45,7 @@ class NewsDataSource(
             try {
                 val result = withContext(Dispatchers.IO) {
                     mNewsInteractions.getNewsAfter(
-                        local = BuildConfig.HEADLINES_LOCAL_CACHE,
+                        local = true,
                         requestedLoadSize = params.requestedLoadSize,
                         key = params.key,
                         page = 0

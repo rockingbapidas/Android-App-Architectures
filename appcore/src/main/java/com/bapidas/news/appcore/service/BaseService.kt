@@ -1,5 +1,5 @@
 package com.bapidas.news.appcore.service
 
-import dagger.android.DaggerService
+import android.app.Service
 
-abstract class BaseService : DaggerService()
+abstract class BaseService : Service()

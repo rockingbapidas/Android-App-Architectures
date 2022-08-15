@@ -5,16 +5,16 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import androidx.paging.LivePagedListBuilder
 import androidx.paging.PagedList
-import com.bapidas.news.appcore.di.scope.ActivityScope
+import com.bapidas.news.appcore.di.ActivityScope
 import com.bapidas.news.appcore.viewmodel.BaseActivityViewModel
-import com.bapidas.news.framework.interactions.NewsInteractions
+import com.bapidas.news.domain.NewsDataInteraction
 import com.bapidas.news.headlines.listing.paging.NewsDataSourceFactory
 import com.bapidas.news.headlines.model.Article
 import javax.inject.Inject
 
 @ActivityScope
 class NewsViewModel @Inject constructor(
-    private val mNewsInteractions: NewsInteractions
+    private val mNewsInteractions: NewsDataInteraction
 ) : BaseActivityViewModel() {
 
     //Progress live data

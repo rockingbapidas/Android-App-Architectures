@@ -1,18 +1,22 @@
 package com.bapidas.news.framework.network.repository
 
 import com.bapidas.news.data.model.NewsListEntity
-import com.bapidas.news.data.repository.NewsRemoteRepository
-import com.bapidas.news.framework.BuildConfig
-import com.bapidas.news.framework.network.api.RemoteNewsApi
+import com.bapidas.news.data.repository.INewsRemoteRepository
+import com.bapidas.news.framework.network.api.IRemoteNewsApi
 import com.bapidas.news.framework.network.mapper.fromNewsList
+import javax.inject.Inject
+import javax.inject.Named
 
-class RemoteNewsRepository(private val mRemoteNewsApi: RemoteNewsApi) : NewsRemoteRepository {
+class RemoteNewsRepository @Inject constructor(
+    private val mRemoteNewsApi: IRemoteNewsApi,
+    @Named("newsDataApiKey") private val newsDataApiKey: String
+) : INewsRemoteRepository {
     override suspend fun getNews(requestedLoadSize: Int): NewsListEntity {
         return mRemoteNewsApi.fetchNewsFromServer(
             INITIAL_PAGE,
             requestedLoadSize,
             CATEGORY,
-            BuildConfig.API_KEY
+            newsDataApiKey
         ).fromNewsList()
     }
 
@@ -21,7 +25,7 @@ class RemoteNewsRepository(private val mRemoteNewsApi: RemoteNewsApi) : NewsRemo
             page,
             requestedLoadSize,
             CATEGORY,
-            BuildConfig.API_KEY
+            newsDataApiKey
         ).fromNewsList()
     }
 

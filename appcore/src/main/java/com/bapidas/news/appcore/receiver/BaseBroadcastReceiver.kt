@@ -1,5 +1,5 @@
 package com.bapidas.news.appcore.receiver
 
-import dagger.android.DaggerBroadcastReceiver
+import android.content.BroadcastReceiver
 
-abstract class BaseBroadcastReceiver : DaggerBroadcastReceiver()
+abstract class BaseBroadcastReceiver : BroadcastReceiver()

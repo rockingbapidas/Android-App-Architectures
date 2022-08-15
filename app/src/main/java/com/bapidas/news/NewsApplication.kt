@@ -1,39 +1,83 @@
 package com.bapidas.news
 
-import android.util.Log
-import androidx.work.WorkManager
-import com.bapidas.news.appcore.worker.WorkerInjectorFactory
-import com.bapidas.news.di.component.DaggerApplicationComponent
-import dagger.android.AndroidInjector
-import dagger.android.DaggerApplication
+import androidx.multidex.MultiDexApplication
+import com.bapidas.news.appcore.di.AppCoreComponent
+import com.bapidas.news.appcore.di.DaggerAppCoreComponent
+import com.bapidas.news.di.AppComponent
+import com.bapidas.news.di.AppComponentProvider
+import com.bapidas.news.di.DaggerAppComponent
+import com.bapidas.news.framework.di.DaggerFrameworkComponent
+import com.bapidas.news.framework.di.FrameworkComponent
+import com.bapidas.news.headlines.di.DaggerHeadlinesComponent
+import com.bapidas.news.headlines.di.HeadlinesComponent
+import com.bapidas.news.headlines.di.HeadlinesComponentProvider
 import timber.log.Timber
-import java.util.concurrent.Executors
 import javax.inject.Inject
 
-class NewsApplication : DaggerApplication() {
+class NewsApplication : MultiDexApplication(), AppComponentProvider, HeadlinesComponentProvider {
+    private var appComponent: AppComponent? = null
+    private var headlinesComponent: HeadlinesComponent? = null
+
     @Inject
     lateinit var timberTree: Timber.Tree
 
-    @Inject
-    lateinit var workerInjectorFactory: WorkerInjectorFactory
-
-    override fun applicationInjector(): AndroidInjector<out DaggerApplication> {
-        return DaggerApplicationComponent.builder().application(this).build()
-    }
-
     override fun onCreate() {
         super.onCreate()
+        initAppComponent()
         Timber.plant(timberTree)
-        configureWorkManager()
     }
 
-    private fun configureWorkManager() {
-        val config = androidx.work.Configuration.Builder()
-            .setMinimumLoggingLevel(Log.VERBOSE)
-            .setTaskExecutor(Executors.newCachedThreadPool())
-            .setExecutor(Executors.newCachedThreadPool())
-            .setWorkerFactory(workerInjectorFactory)
+    private fun initAppComponent() {
+        appComponent = DaggerAppComponent
+            .builder()
+            .application(this)
+            .core(coreComponent())
+            .framework(frameWorkComponent())
             .build()
-        WorkManager.initialize(this, config)
+        appComponent?.inject(this)
+    }
+
+    override fun provideAppComponent(): AppComponent {
+        if (appComponent == null) initAppComponent()
+        return appComponent!!
+    }
+
+    private fun coreComponent(): AppCoreComponent {
+        return DaggerAppCoreComponent.factory().create(
+            this,
+            BuildConfig.ENABLE_LOGS,
+            BuildConfig.DEBUG.not()
+        )
+    }
+
+    private fun frameWorkComponent(): FrameworkComponent {
+        return DaggerFrameworkComponent.factory().create(
+            this,
+            BuildConfig.API_DOMAIN,
+            BuildConfig.DATABASE_NAME,
+            BuildConfig.DATABASE_VERSION,
+            BuildConfig.DATASTORE_NAME,
+            BuildConfig.DATASTORE_VERSION,
+            getString(R.string.app_name),
+            BuildConfig.VERSION_NAME,
+            BuildConfig.ENABLE_LOGS,
+            BuildConfig.DEBUG.not(),
+            BuildConfig.GOOGLE_MAPS_KEY,
+            BuildConfig.NEWS_DATA_API_KEY
+        )
+    }
+
+    private fun initHeadlinesComponent() {
+        headlinesComponent = DaggerHeadlinesComponent
+            .builder()
+            .application(this)
+            .core(coreComponent())
+            .framework(frameWorkComponent())
+            .build()
+    }
+
+    override fun provideHeadlinesComponent(): HeadlinesComponent {
+        if (headlinesComponent == null) initHeadlinesComponent()
+        return headlinesComponent!!
     }
 }

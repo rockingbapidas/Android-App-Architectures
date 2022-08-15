@@ -2,13 +2,13 @@ package com.bapidas.news.headlines.listing.paging
 
 import androidx.lifecycle.MutableLiveData
 import androidx.paging.DataSource
-import com.bapidas.news.framework.interactions.NewsInteractions
+import com.bapidas.news.domain.NewsDataInteraction
 import com.bapidas.news.headlines.model.Article
 import kotlinx.coroutines.CoroutineScope
 import timber.log.Timber
 
 class NewsDataSourceFactory(
-    private val mNewsInteractions: NewsInteractions,
+    private val mNewsInteractions: NewsDataInteraction,
     private val mCoroutineScope: CoroutineScope
 ) : DataSource.Factory<String, Article>() {
 

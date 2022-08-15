@@ -5,19 +5,22 @@ import android.content.Intent
 import android.os.Handler
 import android.view.View
 import androidx.lifecycle.Observer
-import com.bapidas.news.appcore.activity.BaseActivity
+import com.bapidas.news.appcore.activity.BaseDataBindingActivity
 import com.bapidas.news.appcore.adapter.callback.ItemViewListener
 import com.bapidas.news.appcore.adapter.recycler.decoration.VerticalSpaceItemDecoration
 import com.bapidas.news.appcore.extensions.dp
 import com.bapidas.news.headlines.R
 import com.bapidas.news.headlines.databinding.ActivityNewsBinding
 import com.bapidas.news.headlines.detail.NewsDetailsActivity
+import com.bapidas.news.headlines.di.HeadlinesComponentProvider
 import com.bapidas.news.headlines.listing.adapter.NewsAdapter
 import com.bapidas.news.headlines.model.Article
 import kotlinx.android.synthetic.main.activity_news.*
 import timber.log.Timber
 
-class NewsActivity : BaseActivity<ActivityNewsBinding, NewsViewModel>(), ItemViewListener {
+class NewsActivity :
+    BaseDataBindingActivity<ActivityNewsBinding, NewsViewModel, HeadlinesComponentProvider>(),
+    ItemViewListener {
     override val layoutViewRes: Int = R.layout.activity_news
 
     override val viewModelClass: Class<NewsViewModel> = NewsViewModel::class.java
@@ -62,5 +65,9 @@ class NewsActivity : BaseActivity<ActivityNewsBinding, NewsViewModel>(), ItemVie
             fromActivity.startActivity(intent)
             fromActivity.finish()
         }
+    }
+
+    override fun diInjection(component: HeadlinesComponentProvider) {
+        component.provideHeadlinesComponent().newNewsSubComponent().inject(this)
     }
 }

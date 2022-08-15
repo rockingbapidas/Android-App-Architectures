@@ -1,5 +1,5 @@
 package com.bapidas.news.appcore.service
 
-import dagger.android.DaggerIntentService
+import android.app.IntentService
 
-abstract class BaseIntentService(name: String) : DaggerIntentService(name)
+abstract class BaseIntentService(name: String) : IntentService(name)

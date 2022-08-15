@@ -6,18 +6,24 @@ import android.view.View
 import androidx.core.app.ActivityOptionsCompat
 import androidx.core.os.bundleOf
 import androidx.core.util.Pair
-import com.bapidas.news.appcore.activity.BaseActivity
+import com.bapidas.news.appcore.activity.BaseDataBindingActivity
 import com.bapidas.news.appcore.extensions.getStatusBarHeight
 import com.bapidas.news.appcore.extensions.makeStatusBarTransparent
 import com.bapidas.news.appcore.extensions.replaceFragment
 import com.bapidas.news.appcore.extensions.setMarginTop
 import com.bapidas.news.headlines.R
-import com.bapidas.news.headlines.browser.NewsBrowserFragment
 import com.bapidas.news.headlines.databinding.ActivityNewsDetailBinding
+import com.bapidas.news.headlines.detail.browser.NewsBrowserFragment
+import com.bapidas.news.headlines.di.HeadlinesComponentProvider
 import com.bapidas.news.headlines.model.Article
 import kotlinx.android.synthetic.main.activity_news_detail.*
 
-class NewsDetailsActivity : BaseActivity<ActivityNewsDetailBinding, NewsDetailViewModel>() {
+class NewsDetailsActivity :
+    BaseDataBindingActivity<ActivityNewsDetailBinding, NewsDetailViewModel, HeadlinesComponentProvider>(),
+    NewsDetailSubComponentProvider {
+
+    private lateinit var newNewsDetailSubComponent: NewsDetailSubComponent
+
     override val layoutViewRes: Int = R.layout.activity_news_detail
 
     override val viewModelClass: Class<NewsDetailViewModel> = NewsDetailViewModel::class.java
@@ -82,5 +88,15 @@ class NewsDetailsActivity : BaseActivity<ActivityNewsDetailBinding, NewsDetailVi
             }
             fromActivity.startActivity(intent, activityOptionsCompat.toBundle())
         }
+    }
+
+    override fun diInjection(component: HeadlinesComponentProvider) {
+        newNewsDetailSubComponent =
+            component.provideHeadlinesComponent().newNewsDetailSubComponent()
+        newNewsDetailSubComponent.inject(this)
+    }
+
+    override fun provideNewsDetailSubComponent(): NewsDetailSubComponent {
+        return newNewsDetailSubComponent
     }
 }

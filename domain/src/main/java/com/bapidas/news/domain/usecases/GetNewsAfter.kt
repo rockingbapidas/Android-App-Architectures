@@ -1,8 +1,9 @@
 package com.bapidas.news.domain.usecases
 
-import com.bapidas.news.domain.NewsRepository
+import com.bapidas.news.domain.INewsRepository
+import javax.inject.Inject
 
-class GetNewsAfter(private val repository: NewsRepository) {
+class GetNewsAfter @Inject constructor(private val repository: INewsRepository) {
     suspend operator fun invoke(
         local: Boolean,
         requestedLoadSize: Int,

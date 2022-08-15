@@ -1,17 +1,20 @@
 object Versions {
     const val gradle = "4.1.2"
-    const val kotlin = "1.3.72"
-    const val appcompat = "1.1.0"
-    const val core_ktx = "1.2.0"
-    const val material_component = "1.0.0"
+    const val kotlin = "1.5.21"
+    const val appcompat = "1.3.0"
+    const val core_ktx = "1.5.0"
+    const val material_component = "1.3.0"
     const val multi_dex = "2.0.1"
     const val constraint_layout = "1.1.3"
     const val retrofit = "2.7.1"
     const val ok_http = "4.4.0"
     const val gson = "2.8.6"
-    const val dagger = "2.26"
+    const val dagger = "2.36"
     const val lifecycle = "2.2.0"
     const val room = "2.2.4"
+    const val datastore = "1.0.0-rc01"
+    const val protobuf = "3.10.0"
+    const val protobuf_plugin = "0.8.17"
     const val paging = "2.1.1"
     const val work = "2.3.2"
     const val glide = "4.11.0"
@@ -35,6 +38,7 @@ object Plugin {
     const val kotlin = "kotlin"
     const val kotlin_android_extension = "android.extensions"
     const val kotlin_android_kapt = "kapt"
+    const val proto_buf = "com.google.protobuf"
 }
 
 object Libs {
@@ -63,12 +67,16 @@ object Dependencies {
     const val room_compiler = "androidx.room:room-compiler:${Versions.room}"
     const val room_ktx = "androidx.room:room-ktx:${Versions.room}"
 
+    const val datastore = "androidx.datastore:datastore:${Versions.datastore}"
+    const val datastore_preferences =
+        "androidx.datastore:datastore-preferences:${Versions.datastore}"
+    const val protobuf_javalite = "com.google.protobuf:protobuf-javalite:${Versions.protobuf}"
+
     const val paging_runtime = "androidx.paging:paging-runtime-ktx:${Versions.paging}"
 
     const val work_runtime = "androidx.work:work-runtime-ktx:${Versions.work}"
 
-    const val dagger_android = "com.google.dagger:dagger-android-support:${Versions.dagger}"
-    const val dagger_processor = "com.google.dagger:dagger-android-processor:${Versions.dagger}"
+    const val dagger = "com.google.dagger:dagger:${Versions.dagger}"
     const val dagger_compiler = "com.google.dagger:dagger-compiler:${Versions.dagger}"
 
     const val glide = "com.github.bumptech.glide:glide:${Versions.glide}"
